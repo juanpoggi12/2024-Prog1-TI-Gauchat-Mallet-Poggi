@@ -15,6 +15,9 @@ namespace TIEntities
         public string Apellido { get; set; }
         public string Email {get; set; }
         public int Telefono { get; set; }
-        public string Latitud
+        public float Longitud {  get; set; } 
+        public float Latitud { get; set; }
+        public DateTime FechaDeNacimiento { get; set; }
+        public DateTime? FechaDeEliminacion {  get; set; }
     }
 }
