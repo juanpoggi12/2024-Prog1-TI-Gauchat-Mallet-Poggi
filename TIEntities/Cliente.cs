@@ -19,5 +19,6 @@ namespace TIEntities
         public float Latitud { get; set; }
         public DateTime FechaDeNacimiento { get; set; }
         public DateTime? FechaDeEliminacion {  get; set; }
+        public DateTime? DarDeAlta { get; set; }
     }
 }

@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="FileName2.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="NewFile1.txt" />
   </ItemGroup>
 
@@ -15,6 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\EntitiesDTO\EntitiesDTO.csproj" />
     <ProjectReference Include="..\TIData\TIData.csproj" />
     <ProjectReference Include="..\TIEntities\TIEntities.csproj" />
   </ItemGroup>

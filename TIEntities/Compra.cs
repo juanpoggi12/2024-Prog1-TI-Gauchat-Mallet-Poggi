@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 namespace TIEntities
 {
     public class Compra
@@ -14,17 +13,22 @@ namespace TIEntities
         public DateTime FechaCompra {  get; set; }
         public int CantidadComprada { get; set; }
         public DateTime FechaEntregaSolicitada { get; set; }
-        public bool Estado {  get; set; }
+        public EnumEstadoCompra Estado {  get; set; }
         public double MontoTotal { get; set; }
-
         public string PuntoDestino { get; set; }
+        public double PrecioProducto { get; set; }
         public double CalcularMontoTotal()
         {
-           
+            return MontoTotal = PrecioProducto * CantidadComprada;
         }
         public int CalcularPorcentajeIva()
         {
 
+        }
+
+        public Compra()
+        {
+            MontoTotal = CalcularMontoTotal();
         }
 
     }

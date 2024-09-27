@@ -15,9 +15,9 @@ namespace TIData
     {
         private static string rutaArchivo = Path.GetFullPath("Producto.json");
         
-        public static void EscribirProductos(Producto producto)
+        public static void EscribirProductosAJson(Producto producto)
         {
-            List<Producto> productos = LeerProductos();
+            List<Producto> productos = LeerProductosAJson();
 
             if(producto.Codigo == 0)
             {
@@ -34,7 +34,7 @@ namespace TIData
             File.WriteAllText(rutaArchivo, json);
         }
 
-        public static List<Producto> LeerProductos()
+        public static List<Producto> LeerProductosAJson()
         {
             if (File.Exists($"{rutaArchivo}"))
             {

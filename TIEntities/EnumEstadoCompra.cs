@@ -4,9 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TIData
+namespace TIEntities
 {
-    public class ClientesFiles
+    public enum EnumEstadoCompra
     {
+        OPEN,
+        READY_TO_DISPATCH
     }
 }

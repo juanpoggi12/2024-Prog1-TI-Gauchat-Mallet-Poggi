@@ -3,15 +3,22 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35208.52
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TIConsole", "TIConsole\TIConsole.csproj", "{BCADBD3D-C3F7-4E72-8903-1C05BC136723}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TIConsole", "TIConsole\TIConsole.csproj", "{BCADBD3D-C3F7-4E72-8903-1C05BC136723}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TIEntities", "TIEntities\TIEntities.csproj", "{C410CA73-802C-4AAB-9043-D35122EFC2D6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TIEntities", "TIEntities\TIEntities.csproj", "{C410CA73-802C-4AAB-9043-D35122EFC2D6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TIData", "TIData\TIData.csproj", "{2EE28FD6-7CFD-429D-BC65-E1C7E3EE76C7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TIData", "TIData\TIData.csproj", "{2EE28FD6-7CFD-429D-BC65-E1C7E3EE76C7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TIService", "TIService\TIService.csproj", "{980B0F29-4F80-46D4-A1B4-37323FFABE8C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TIService", "TIService\TIService.csproj", "{980B0F29-4F80-46D4-A1B4-37323FFABE8C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TIAPI", "TIAPI\TIAPI.csproj", "{D3CC4F8C-328E-4891-AB12-C21FA00AB234}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TIAPI", "TIAPI\TIAPI.csproj", "{D3CC4F8C-328E-4891-AB12-C21FA00AB234}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Enums", "Enums", "{40CCE8DE-D9F1-4661-ABF5-E870F3EAF15A}"
+	ProjectSection(SolutionItems) = preProject
+		EnumEstadoCompra.cs = EnumEstadoCompra.cs
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntitiesDTO", "EntitiesDTO\EntitiesDTO.csproj", "{F84FFEBE-8F47-4072-9A44-10018A231A3F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +46,10 @@ Global
 		{D3CC4F8C-328E-4891-AB12-C21FA00AB234}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D3CC4F8C-328E-4891-AB12-C21FA00AB234}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D3CC4F8C-328E-4891-AB12-C21FA00AB234}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F84FFEBE-8F47-4072-9A44-10018A231A3F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F84FFEBE-8F47-4072-9A44-10018A231A3F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F84FFEBE-8F47-4072-9A44-10018A231A3F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F84FFEBE-8F47-4072-9A44-10018A231A3F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
