@@ -19,16 +19,23 @@ namespace TIEntities
         public double PrecioProducto { get; set; }
         public double CalcularMontoTotal()
         {
-            return MontoTotal = PrecioProducto * CantidadComprada;
+            double Monto = (PrecioProducto * CantidadComprada) * 1.21;
+            if (CantidadComprada > 4)
+            {
+              Monto =  CalcularPorcentajeDescuento(Monto);
+            }
+            return Monto;
         }
-        public int CalcularPorcentajeIva()
+        public double CalcularPorcentajeDescuento(double Monto)
         {
-
+            return Monto * 0.75;
         }
 
         public Compra()
         {
             MontoTotal = CalcularMontoTotal();
+            FechaCompra = DateTime.Now;
+            Estado = EnumEstadoCompra.OPEN;
         }
 
     }

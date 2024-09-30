@@ -13,7 +13,7 @@ namespace TIEntities
         public DateOnly FechaPosibleEntregaDesde { get; set; }
         public DateOnly FechaPosibleEntregaHasta { get; set; }
         public double PorcentajeOcupacionCarga {  get; set; }
-        public List<Compra> Compras { get; set; }
+        public List<int> CodigoCompras { get; set; }
 
     }
 }

@@ -32,7 +32,7 @@ namespace TIData
             File.WriteAllText($"{rutaArchivo}", json);
         }
 
-        private static List<Viaje> LeerViajeAJson()
+        public static List<Viaje> LeerViajeAJson()
         {
             if (File.Exists($"{rutaArchivo}"))
             {

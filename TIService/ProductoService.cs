@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TIEntities;
 using TIData;
+using EntitiesDTO;
 
 namespace TIService
 {
@@ -37,10 +38,12 @@ namespace TIService
             return new Result { Success = true };
         }
 
-        public Result AgergarProducto(Producto producto)
+        public Result AgergarProducto(ProductoDTO productoDTO)
         {
+            Producto producto = new Producto();
+        producto = PasarDtoAEntitie(productoDTO);
             var Result = ValidarCompletitudProducto(producto);
-                if (Result.Success == false)
+                if (!Result.Success)
             {
                 return new Result { Message = Result.Message };
             }
@@ -56,8 +59,36 @@ namespace TIService
             {
                 return new Result { Success = false, Message = "Producto no encontrado" };
             }
-            Result.Stock = Cantidad;
+            Result.Stock = Result.Stock + Cantidad;
+            ProductoFiles.EscribirProductosAJson(Result);
             return new Result { Success = true };
         }
+        public ProductoDTO PasarEntitieADto(Producto producto)
+        {
+            ProductoDTO productoDTO = new ProductoDTO();
+            productoDTO.Nombre = producto.Nombre;
+            productoDTO.Marca = producto.Marca;
+            productoDTO.PrecioUnitario = producto.PrecioUnitario;
+            productoDTO.ProfundidadCaja = producto.ProfundidadCaja;
+            productoDTO.Stock = producto.Stock;
+            productoDTO.AnchoCaja = producto.AnchoCaja;
+            productoDTO.StockMinimo = producto.StockMinimo;
+            productoDTO.AltoCaja = producto.AltoCaja;
+            return productoDTO;
+        }
+        public Producto PasarDtoAEntitie(ProductoDTO productoDTO)
+        {
+            Producto producto = new Producto();
+            producto.Nombre = productoDTO.Nombre;
+            producto.Marca = productoDTO.Marca;
+            producto.PrecioUnitario = productoDTO.PrecioUnitario;
+            producto.ProfundidadCaja = productoDTO.ProfundidadCaja;
+            producto.Stock = productoDTO.Stock;
+            producto.AnchoCaja = productoDTO.AnchoCaja;
+            producto.StockMinimo = productoDTO.StockMinimo;
+            producto.AltoCaja = productoDTO.AltoCaja;
+            return producto;
+        }
+
     }
 }

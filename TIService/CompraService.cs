@@ -36,17 +36,23 @@ namespace TIService
 
         public Result AgregarCompra(CompraDTO compraDTO)
         {
-            Compra compra = PasarDtoAEntitie(compraDTO);
-
+            Compra compra = new Compra();
+             compra = PasarDtoAEntitie(compraDTO);
             var resultado = ValidarCompletitudCompra(compra);
             if (!resultado.Success)
             {
-                return new Result { Success = false, Message = resultado.Message };
+                return new Result {Message = resultado.Message };
             }
+           Producto producto = ProductoFiles.LeerProductosAJson().FirstOrDefault(x => x.Codigo == compra.Codigo);
+            resultado = producto.ValidarStock(compra.CantidadComprada);
+            if (!resultado.Success)
+            {
+                return new Result {Message = resultado.Message };
+            }
+            ProductoService productoService = new ProductoService();
+            productoService.ActualizarStockProducto(producto.Codigo, -(compra.CantidadComprada));
             CompraFiles.EscribirCompraAJson(compra);
             return new Result { Success = true };
-
-
         }
         public List<CompraDTO> ObtenerCompras()
         {
@@ -60,7 +66,8 @@ namespace TIService
             }
             return ComprasDTO;
         }
-
+        
+        
         public static CompraDTO PasarEnitieADto(Compra compra) 
         {
             CompraDTO compraDTO = new CompraDTO() 

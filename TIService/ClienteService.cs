@@ -25,7 +25,7 @@ namespace TIService
                     (valor is string str && string.IsNullOrEmpty(str)) ||
                     (valor is int num && num <= 0)) 
                 {
-                    return new Result { Message = mensaje, Success = false };
+                    return new Result { Message = mensaje};
                 }
             }
 
@@ -33,13 +33,13 @@ namespace TIService
         }
         public Result AgregarCliente(ClienteDTO clienteDTO)
         {
-            var cliente = PasarDtoAEntitie(clienteDTO);
+            Cliente cliente = new Cliente();
+             cliente = PasarDtoAEntitie(clienteDTO);
             var resultado = ValidarCompletitudClientes(cliente);
             if (!resultado.Success)
             {
                 return new Result { Success = false, Message = resultado.Message };
-            }
-            cliente.DarDeAlta = DateTime.Now;
+            }           
             ClienteFiles.EscribirClienteAJson(cliente);
             return new Result { Success = true };
         }
@@ -53,9 +53,8 @@ namespace TIService
                 ListaClientes.Add(NewDTO);
             }
             return ListaClientes;
-        }
-
-        public bool EditarCliente(int Dni, ClienteDTO clienteTemporalDTO)
+        }       
+        public Result EditarCliente(int Dni, ClienteDTO clienteTemporalDTO)
         {
             var clienteTemporal = PasarDtoAEntitie(clienteTemporalDTO);
             Cliente cliente = ClienteFiles.LeerClienteAJson().FirstOrDefault(x => x.Dni == clienteTemporal.Dni);
@@ -63,7 +62,7 @@ namespace TIService
 
             if (cliente == null || !resultado.Success)
             {
-                return false;
+                return new Result { };
             }
             cliente.Dni = clienteTemporal.Dni;
             cliente.Nombre = clienteTemporal.Nombre;
@@ -73,14 +72,13 @@ namespace TIService
             cliente.Longitud = clienteTemporal.Longitud;
             cliente.Latitud = clienteTemporal.Latitud;
             cliente.FechaDeNacimiento = clienteTemporal.FechaDeNacimiento;
-            cliente.FechaDeEliminacion = clienteTemporal.FechaDeEliminacion;
-
+            cliente.FechaUltimaActualizacion = DateTime.Now;
             ClienteFiles.EscribirClienteAJson(cliente);
 
-            return true;
+            return new Result { Success = true };
         }
 
-        public bool EliminarCliente(int dni)
+        public Result EliminarCliente(int dni)
         {
             List<Cliente> clientes = ClienteFiles.LeerClienteAJson();
 
@@ -88,14 +86,14 @@ namespace TIService
 
             if (cliente == null)
             {
-                return false;
+                return new Result{Message = "No se encontro al cliente" };
             }
 
             cliente.FechaDeEliminacion = DateTime.Now;
 
             ClienteFiles.EscribirClienteAJson(cliente);
 
-            return true;
+            return new Result { Success = true};
         }
         public ClienteDTO PasarEntitieADto(Cliente cliente) {
             ClienteDTO clienteDTO = new ClienteDTO();
@@ -110,9 +108,16 @@ namespace TIService
             return clienteDTO;
         }
         public Cliente PasarDtoAEntitie (ClienteDTO clienteDTO)
-        {           
-           List<Cliente> clientes = ClienteFiles.LeerClienteAJson();
-            Cliente cliente = clientes.FirstOrDefault(x => x.Dni == clienteDTO.Dni);        
+        {
+            Cliente cliente = new Cliente();
+            cliente.Dni = clienteDTO.Dni;
+            cliente.FechaDeNacimiento = clienteDTO.FechaDeNacimiento;
+            cliente.Telefono = clienteDTO.Telefono;
+            cliente.Email = clienteDTO.Email;
+            cliente.Latitud = clienteDTO.Latitud;
+            cliente.Longitud = clienteDTO.Longitud;
+            cliente.Nombre = clienteDTO.Nombre;
+            cliente.Apellido = clienteDTO.Apellido;
             return cliente;
         }
     }

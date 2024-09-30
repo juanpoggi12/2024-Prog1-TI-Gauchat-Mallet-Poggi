@@ -5,7 +5,9 @@
         public string Message { get; set; }
         public bool Success { get; set; }
 
-        public Result() {
-        Success = true;
+        public Result()
+        {
+            Success = false;
         }
     }
+}
