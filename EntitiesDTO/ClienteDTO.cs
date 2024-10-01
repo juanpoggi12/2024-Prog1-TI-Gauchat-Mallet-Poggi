@@ -13,8 +13,8 @@ namespace EntitiesDTO
         public string Apellido { get; set; }
         public string Email { get; set; }
         public int Telefono { get; set; }
-        public float Longitud { get; set; }
-        public float Latitud { get; set; }
+        public double Longitud { get; set; }
+        public double Latitud { get; set; }
         public DateTime FechaDeNacimiento { get; set; }
     }
 }

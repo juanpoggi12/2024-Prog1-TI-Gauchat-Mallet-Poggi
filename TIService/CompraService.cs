@@ -49,6 +49,12 @@ namespace TIService
             {
                 return new Result {Message = resultado.Message };
             }
+            Cliente cliente = ClienteFiles.LeerClienteAJson().FirstOrDefault(x => x.Dni == compra.DniCliente);
+            if (cliente == null) {
+                return new Result { Message = "Cliente no encontrado" };
+            }
+            compra.Longitud = cliente.Longitud;
+            compra.Latitud = cliente.Latitud;
             ProductoService productoService = new ProductoService();
             productoService.ActualizarStockProducto(producto.Codigo, -(compra.CantidadComprada));
             CompraFiles.EscribirCompraAJson(compra);
@@ -61,8 +67,7 @@ namespace TIService
 
             foreach(var recorrer in lista)
             {
-                var dto = PasarEnitieADto(recorrer);
-                ComprasDTO.Add(dto);
+                ComprasDTO.Add(PasarEnitieADto(recorrer));
             }
             return ComprasDTO;
         }
