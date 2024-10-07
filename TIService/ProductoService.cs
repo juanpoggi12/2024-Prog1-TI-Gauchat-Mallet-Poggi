@@ -1,17 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TIEntities;
+﻿using EntitiesDTO;
 using TIData;
-using EntitiesDTO;
+using TIEntities;
 
 namespace TIService
 {
-   public class ProductoService
+    public class ProductoService
     {
-
         public Result ValidarCompletitudProducto(Producto producto)
         {
             var validaciones = new (object valor, string mensaje)[]
@@ -41,17 +35,17 @@ namespace TIService
         public Result AgergarProducto(ProductoDTO productoDTO)
         {
             Producto producto = new Producto();
-        producto = PasarDtoAEntitie(productoDTO);
+            producto = PasarDtoAEntitie(productoDTO);
             var Result = ValidarCompletitudProducto(producto);
-                if (!Result.Success)
+            if (!Result.Success)
             {
                 return new Result { Message = Result.Message };
             }
             ProductoFiles.EscribirProductosAJson(producto);
             return new Result { Success = true };
-
         }
-        public Result ActualizarStockProducto (int Codigo, int Cantidad)
+
+        public Result ActualizarStockProducto(int Codigo, int Cantidad)
         {
             var Listado = ProductoFiles.LeerProductosAJson();
             var Result = Listado.FirstOrDefault(x => x.Codigo == Codigo);
@@ -63,6 +57,7 @@ namespace TIService
             ProductoFiles.EscribirProductosAJson(Result);
             return new Result { Success = true };
         }
+
         public ProductoDTO PasarEntitieADto(Producto producto)
         {
             ProductoDTO productoDTO = new ProductoDTO();
@@ -76,6 +71,7 @@ namespace TIService
             productoDTO.AltoCaja = producto.AltoCaja;
             return productoDTO;
         }
+
         public Producto PasarDtoAEntitie(ProductoDTO productoDTO)
         {
             Producto producto = new Producto();
@@ -89,6 +85,5 @@ namespace TIService
             producto.AltoCaja = productoDTO.AltoCaja;
             return producto;
         }
-
     }
 }

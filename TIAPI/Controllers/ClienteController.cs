@@ -9,10 +9,12 @@ namespace TIAPI.Controllers
     public class ClienteController : ControllerBase
     {
         private ClienteService clienteService;
+
         public ClienteController()
         {
             clienteService = new ClienteService();
         }
+
         [HttpPost()]
         public IActionResult Post([FromBody] ClienteDTO clienteDTO)
         {
@@ -30,6 +32,7 @@ namespace TIAPI.Controllers
             var Result = clienteService.ObtenerClientes();
             return Ok(Result);
         }
+
         [HttpDelete("{Dni}")]
         public IActionResult Delete(int DNI)
         {
@@ -41,6 +44,7 @@ namespace TIAPI.Controllers
 
             return Ok();
         }
+
         [HttpPut("{DNI}")]
         public IActionResult Put(int DNI, [FromBody] ClienteDTO clienteDTO)
         {

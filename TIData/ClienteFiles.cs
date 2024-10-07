@@ -1,14 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Dynamic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Newtonsoft.Json;
 using TIEntities;
-using Newtonsoft;
-using Newtonsoft.Json;
-using System.Net.WebSockets;
-
 
 namespace TIData
 {
@@ -22,7 +13,7 @@ namespace TIData
 
             var clienteExistente = clientes.FirstOrDefault(x => x.Dni == cliente.Dni);
 
-            if(clienteExistente != null)
+            if (clienteExistente != null)
             {
                 clientes.Remove(clienteExistente);
                 clientes.Add(cliente);

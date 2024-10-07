@@ -1,7 +1,7 @@
-﻿using TIEntities;
+﻿using EntitiesDTO;
 using TIData;
-using EntitiesDTO;
-using System.Security.Cryptography.X509Certificates;
+using TIEntities;
+
 namespace TIService
 {
     public class ClienteService
@@ -12,9 +12,9 @@ namespace TIService
             {
                 (cliente.Nombre, "Falta agregar nombre"),
                 (cliente.Apellido, "Falta agregar apellido"),
-                (cliente.Dni, "Falta agregar DNI"), 
+                (cliente.Dni, "Falta agregar DNI"),
                 (cliente.Longitud, "Falta agregar longitud"),
-                (cliente.Latitud, "Falta agregar latitud"), 
+                (cliente.Latitud, "Falta agregar latitud"),
                 (cliente.Telefono, "Falta agregar telefono"),
                 (cliente.Email, "Falta agregar mail")
             };
@@ -23,37 +23,40 @@ namespace TIService
             {
                 if (valor == null ||
                     (valor is string str && string.IsNullOrEmpty(str)) ||
-                    (valor is int num && num <= 0)) 
+                    (valor is int num && num <= 0))
                 {
-                    return new Result { Message = mensaje};
+                    return new Result { Message = mensaje };
                 }
             }
 
             return new Result { Success = true };
         }
+
         public Result AgregarCliente(ClienteDTO clienteDTO)
         {
             Cliente cliente = new Cliente();
-             cliente = PasarDtoAEntitie(clienteDTO);
+            cliente = PasarDtoAEntitie(clienteDTO);
             var resultado = ValidarCompletitudClientes(cliente);
             if (!resultado.Success)
             {
                 return new Result { Success = false, Message = resultado.Message };
-            }           
+            }
             ClienteFiles.EscribirClienteAJson(cliente);
             return new Result { Success = true };
         }
+
         public List<ClienteDTO> ObtenerClientes()
         {
             List<ClienteDTO> ListaClientes = new List<ClienteDTO>();
             var result = ClienteFiles.LeerClienteAJson().Where(x => x.FechaDeEliminacion == null).ToList();
             foreach (var cliente in result)
             {
-               var NewDTO = PasarEntitieADto(cliente);
+                var NewDTO = PasarEntitieADto(cliente);
                 ListaClientes.Add(NewDTO);
             }
             return ListaClientes;
-        }       
+        }
+
         public Result EditarCliente(int Dni, ClienteDTO clienteTemporalDTO)
         {
             var clienteTemporal = PasarDtoAEntitie(clienteTemporalDTO);
@@ -86,16 +89,18 @@ namespace TIService
 
             if (cliente == null)
             {
-                return new Result{Message = "No se encontro al cliente" };
+                return new Result { Message = "No se encontro al cliente" };
             }
 
             cliente.FechaDeEliminacion = DateTime.Now;
 
             ClienteFiles.EscribirClienteAJson(cliente);
 
-            return new Result { Success = true};
+            return new Result { Success = true };
         }
-        public ClienteDTO PasarEntitieADto(Cliente cliente) {
+
+        public ClienteDTO PasarEntitieADto(Cliente cliente)
+        {
             ClienteDTO clienteDTO = new ClienteDTO();
             clienteDTO.Dni = cliente.Dni;
             clienteDTO.FechaDeNacimiento = cliente.FechaDeNacimiento;
@@ -107,7 +112,8 @@ namespace TIService
             clienteDTO.Apellido = cliente.Apellido;
             return clienteDTO;
         }
-        public Cliente PasarDtoAEntitie (ClienteDTO clienteDTO)
+
+        public Cliente PasarDtoAEntitie(ClienteDTO clienteDTO)
         {
             Cliente cliente = new Cliente();
             cliente.Dni = clienteDTO.Dni;

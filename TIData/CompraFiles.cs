@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Dynamic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Newtonsoft.Json;
 using TIEntities;
-using Newtonsoft;
-using Newtonsoft.Json;
+
 namespace TIData
 {
     public class CompraFiles
@@ -17,7 +11,7 @@ namespace TIData
         {
             List<Compra> compras = LeerCompraAJson();
 
-            if(compra.Codigo == 0)
+            if (compra.Codigo == 0)
             {
                 compra.Codigo = compras.Count() + 1;
             }
@@ -38,7 +32,8 @@ namespace TIData
             {
                 var json = File.ReadAllText($"{rutaArchivo}");
                 return JsonConvert.DeserializeObject<List<Compra>>(json);
-            } else
+            }
+            else
             {
                 return new List<Compra>();
             }

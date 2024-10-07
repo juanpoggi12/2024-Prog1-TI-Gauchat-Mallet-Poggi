@@ -9,15 +9,18 @@ namespace TIAPI.Controllers
     public class ProductoController : ControllerBase
     {
         private ProductoService productoService;
+
         public ProductoController()
         {
-            productoService = new ProductoService();    
+            productoService = new ProductoService();
         }
 
         [HttpPost()]
-        public IActionResult Post([FromBody] ProductoDTO productoDTO) { 
-        var Result = productoService.AgergarProducto(productoDTO);
-            if (!Result.Success) {
+        public IActionResult Post([FromBody] ProductoDTO productoDTO)
+        {
+            var Result = productoService.AgergarProducto(productoDTO);
+            if (!Result.Success)
+            {
                 return BadRequest(Result.Message);
             }
             return Ok();
@@ -30,7 +33,7 @@ namespace TIAPI.Controllers
             if (!Result.Success)
             {
                 return NotFound(Result.Message);
-            } 
+            }
             return Ok();
         }
     }

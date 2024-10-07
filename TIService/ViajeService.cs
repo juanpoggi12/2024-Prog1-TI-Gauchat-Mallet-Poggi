@@ -1,24 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TIEntities;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 using TIData;
+using TIEntities;
+
 namespace TIService
 {
     public class ViajeService
     {
-
         private Result ValidarCompletitudViaje(Viaje viaje)
         {
             var validaciones = new (object valor, string mensaje)[]
             {
-        (viaje.Codigo, "Falta agregar codigo"),
-        (viaje.PatenteCamionetaAsignada, "Falta agregar Patente de la Camioneta asignada"),
-        (viaje.FechaPosibleEntregaDesde, "Falta agregar la FechaPosibleEntregaDesde"),
-        (viaje.FechaPosibleEntregaHasta, "Falta agregar la FechaPosibleEntregaHasta"),
-        (viaje.PorcentajeOcupacionCarga, "Falta agregar el porcentaje de la ocupacion de la carga"),        
+                (viaje.Codigo, "Falta agregar codigo"),
+                (viaje.PatenteCamionetaAsignada, "Falta agregar Patente de la Camioneta asignada"),
+                (viaje.FechaPosibleEntregaDesde, "Falta agregar la FechaPosibleEntregaDesde"),
+                (viaje.FechaPosibleEntregaHasta, "Falta agregar la FechaPosibleEntregaHasta"),
+                (viaje.PorcentajeOcupacionCarga, "Falta agregar el porcentaje de la ocupacion de la carga"),
             };
 
             foreach (var (valor, mensaje) in validaciones)
@@ -33,6 +29,7 @@ namespace TIService
 
             return new Result { Success = true };
         }
+
         public Result AgregarViaje(Viaje viaje)
         {
             var resultado = ValidarCompletitudViaje(viaje);
@@ -43,34 +40,41 @@ namespace TIService
             ViajeFiles.EscribirViajeAJson(viaje);
             return new Result { Success = true };
         }
+
         public List<Viaje> ObtenerViajes()
         {
             return ViajeFiles.LeerViajeAJson().ToList();
         }
 
-        public Result AsiganrViaje(DateOnly Desde, DateOnly Hasta)
+        public Result AsignarViaje(DateOnly desde, DateOnly hasta)
         {
-            if (Desde < DateOnly.FromDateTime(DateTime.Now))
+            if (desde < DateOnly.FromDateTime(DateTime.Now))
             {
                 return new Result { Message = "La fecha de inicio es menor a la actual" };
             }
-            if (Hasta > (Desde.AddDays(7)))
+            if (hasta > (desde.AddDays(7)))
             {
                 return new Result { Message = "La fecha de entrega es mayor a 7 dias de la fecha de salida" };
             }
             List<Viaje> Viajes = ViajeFiles.LeerViajeAJson();
-            if (VerificarSolapamientoViajes(Desde, Hasta, Viajes))
+            if (VerificarSolapamientoViajes(desde, hasta, Viajes))
             {
                 return new Result { Message = "Ya existe un viaje entre esas fechas" };
             }
+
+            List<Camioneta> camionetas = CamionetaFiles.LeerCamionetaAJson();
             List<Compra> Compras = CompraFiles.LeerCompraAJson();
+
             foreach (var Compra in Compras)
             {
                 if (Compra.Estado == EnumEstadoCompra.OPEN)
                 {
-                    Producto producto = ProductoFiles.LeerProductosAJson().FirstOrDefault(x => x.Codigo == Compra.Codigo);
-                    var Distancia = Compra.CalcularDistancia();
+                    double Distancia = Compra.CalcularDistancia();
+                    List<Producto> productos = ProductoFiles.LeerProductosAJson().Where(x => x.Codigo == Compra.Codigo).ToList();
 
+                    Camioneta camioneta = camionetas.FirstOrDefault(x => x.DistanciaMaximaEnKm >= Distancia || );
+
+                    Viaje viaje = new Viaje();
 
                 }
             }
@@ -93,8 +97,5 @@ namespace TIService
             // Si no se solapan, entonces el final de A es antes del inicio de B, o el inicio de A es después del final de B.
             return !(fechaFinA < fechaInicioB || fechaInicioA > fechaFinB);
         }
-
-        
     }
 }
-

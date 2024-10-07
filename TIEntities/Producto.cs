@@ -16,10 +16,10 @@
         {
             if (Stock < CantidadComprada)
             {
-                return new Result {Message = $"No hay esa cantidad de stock, el stock actual es {Stock}" };
+                return new Result { Message = $"No hay esa cantidad de stock, el stock actual es {Stock}" };
             }
             return new Result { Success = true };
-        }      
+        }
 
         public double PasarACentimetrosCubicos()
         {

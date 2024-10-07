@@ -9,6 +9,7 @@ namespace TIAPI.Controllers
     public class CompraController : ControllerBase
     {
         private CompraService compraService { get; set; }
+
         public CompraController()
         {
             compraService = new CompraService();
