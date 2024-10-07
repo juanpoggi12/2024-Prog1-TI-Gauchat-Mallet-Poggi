@@ -12,6 +12,7 @@ namespace TIEntities
         public string Tipo { get; set; }
         public int TamañoDeCargaEnCm3 {  get; set; }
         public int DistanciaMaximaEnKm { get; set; }
+        public double CantidadEnCm3 { get; set; }
         
     }
 }

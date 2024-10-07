@@ -9,7 +9,7 @@ namespace TIService
 {
     public class ViajeService
     {
-       
+
         private Result ValidarCompletitudViaje(Viaje viaje)
         {
             var validaciones = new (object valor, string mensaje)[]
@@ -18,8 +18,7 @@ namespace TIService
         (viaje.PatenteCamionetaAsignada, "Falta agregar Patente de la Camioneta asignada"),
         (viaje.FechaPosibleEntregaDesde, "Falta agregar la FechaPosibleEntregaDesde"),
         (viaje.FechaPosibleEntregaHasta, "Falta agregar la FechaPosibleEntregaHasta"),
-        (viaje.PorcentajeOcupacionCarga, "Falta agregar el porcentaje de la ocupacion de la carga"),
-        (viaje.Compras, "Falta agregar la lista de compras")
+        (viaje.PorcentajeOcupacionCarga, "Falta agregar el porcentaje de la ocupacion de la carga"),        
             };
 
             foreach (var (valor, mensaje) in validaciones)
@@ -49,43 +48,6 @@ namespace TIService
             return ViajeFiles.LeerViajeAJson().ToList();
         }
 
-        public bool EditarViaje(int codigo, Viaje viajeTemporal)
-        {
-            Viaje viaje = ViajeFiles.LeerViajeAJson().FirstOrDefault(x => x.Codigo == viajeTemporal.Codigo);
-            var resultado = ValidarCompletitudViaje(viajeTemporal);
-
-            if (viaje == null || !resultado.Success)
-            {
-                return false;
-            }
-            viaje.Codigo = viajeTemporal.Codigo;
-            viaje.PatenteCamionetaAsignada = viajeTemporal.PatenteCamionetaAsignada;
-            viaje.FechaPosibleEntregaHasta = viajeTemporal.FechaPosibleEntregaHasta;
-            viaje.PorcentajeOcupacionCarga = viajeTemporal.PorcentajeOcupacionCarga;
-            viaje.Compras = viajeTemporal.Compras;
-
-            ViajeFiles.EscribirViajeAJson(viaje);
-
-            return true;
-        }
-
-        public Result EliminarViaje(int dni)
-        {
-            List<Cliente> clientes = ClienteFiles.LeerClienteAJson();
-
-            Cliente cliente = clientes.FirstOrDefault(x => x.Dni == dni);
-
-            if (cliente == null)
-            {
-                return new Result { };
-            }
-
-            cliente.FechaDeEliminacion = DateTime.Now;
-
-            ClienteFiles.EscribirClienteAJson(cliente);
-
-            return new Result { Success = true };
-        }
         public Result AsiganrViaje(DateOnly Desde, DateOnly Hasta)
         {
             if (Desde < DateOnly.FromDateTime(DateTime.Now))
@@ -97,37 +59,42 @@ namespace TIService
                 return new Result { Message = "La fecha de entrega es mayor a 7 dias de la fecha de salida" };
             }
             List<Viaje> Viajes = ViajeFiles.LeerViajeAJson();
-            if (!VerificarSolapamientoViajes(Desde, Hasta, Viajes))
+            if (VerificarSolapamientoViajes(Desde, Hasta, Viajes))
             {
                 return new Result { Message = "Ya existe un viaje entre esas fechas" };
             }
             List<Compra> Compras = CompraFiles.LeerCompraAJson();
             foreach (var Compra in Compras)
             {
-                if(Compra.Estado == EnumEstadoCompra.OPEN)
+                if (Compra.Estado == EnumEstadoCompra.OPEN)
                 {
+                    Producto producto = ProductoFiles.LeerProductosAJson().FirstOrDefault(x => x.Codigo == Compra.Codigo);
                     var Distancia = Compra.CalcularDistancia();
+
+
                 }
             }
         }
 
-            private bool VerificarSolapamientoViajes(DateOnly fechaInicioNuevo, DateOnly fechaFinNuevo, List<Viaje> viajesExistentes)
+        private bool VerificarSolapamientoViajes(DateOnly fechaInicioNuevo, DateOnly fechaFinNuevo, List<Viaje> viajesExistentes)
+        {
+            foreach (var viaje in viajesExistentes)
             {
-                foreach (var viaje in viajesExistentes)
+                if (ExisteSolapamiento(fechaInicioNuevo, fechaFinNuevo, viaje.FechaPosibleEntregaDesde, viaje.FechaPosibleEntregaHasta))
                 {
-                    if (ExisteSolapamiento(fechaInicioNuevo, fechaFinNuevo, viaje.FechaPosibleEntregaDesde, viaje.FechaPosibleEntregaHasta))
-                    {
-                        return true; // Si se solapa
-                    }
+                    return true; // Si se solapa
                 }
-                return false; // Si no se solapan con ningún viaje
             }
-
-            private bool ExisteSolapamiento(DateOnly fechaInicioA, DateOnly fechaFinA, DateOnly fechaInicioB, DateOnly fechaFinB)
-            {
-                // Si no se solapan, entonces el final de A es antes del inicio de B, o el inicio de A es después del final de B.
-                return !(fechaFinA < fechaInicioB || fechaInicioA > fechaFinB);
-            }
+            return false; // Si no se solapan con ningún viaje
         }
-    } 
+
+        private bool ExisteSolapamiento(DateOnly fechaInicioA, DateOnly fechaFinA, DateOnly fechaInicioB, DateOnly fechaFinB)
+        {
+            // Si no se solapan, entonces el final de A es antes del inicio de B, o el inicio de A es después del final de B.
+            return !(fechaFinA < fechaInicioB || fechaInicioA > fechaFinB);
+        }
+
+        
+    }
+}
 

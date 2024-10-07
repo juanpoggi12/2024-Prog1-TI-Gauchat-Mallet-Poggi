@@ -20,5 +20,10 @@
             }
             return new Result { Success = true };
         }      
+
+        public double PasarACentimetrosCubicos()
+        {
+            return AltoCaja * AnchoCaja * ProfundidadCaja;
+        }
     }
 }

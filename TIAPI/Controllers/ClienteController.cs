@@ -4,14 +4,13 @@ using TIService;
 
 namespace TIAPI.Controllers
 {
-    public class ClienteController
+    [ApiController]
+    [Route("[controller]")]
+    public class ClienteController : ControllerBase
     {
-        [ApiController]
-        [Route("[controller]")]
-        public class ProductoController : ControllerBase
-        {
+        
             private ClienteService clienteService;
-            public ProductoController()
+            public ClienteController()
             {
                 clienteService = new ClienteService();
             }
@@ -54,5 +53,5 @@ namespace TIAPI.Controllers
             }
         }
     }
-}
+
 
