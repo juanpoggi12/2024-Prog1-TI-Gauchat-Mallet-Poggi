@@ -18,10 +18,10 @@ namespace TIAPI.Controllers
         [HttpPost()]
         public IActionResult Post([FromBody] ClienteDTO clienteDTO)
         {
-            var Result = clienteService.AgregarCliente(clienteDTO);
-            if (Result.Success == false)
+            var result = clienteService.AgregarCliente(clienteDTO);
+            if (result.Success == false)
             {
-                return BadRequest(Result.Message);
+                return BadRequest(result.Message);
             }
             return Ok();
         }
@@ -29,17 +29,17 @@ namespace TIAPI.Controllers
         [HttpGet()]
         public IActionResult Get()
         {
-            var Result = clienteService.ObtenerClientes();
-            return Ok(Result);
+            var result = clienteService.ObtenerClientes();
+            return Ok(result);
         }
 
         [HttpDelete("{Dni}")]
         public IActionResult Delete(int DNI)
         {
-            var Result = clienteService.EliminarCliente(DNI);
-            if (!Result.Success)
+            var result = clienteService.EliminarCliente(DNI);
+            if (!result.Success)
             {
-                return NotFound(Result.Message);
+                return NotFound(result.Message);
             }
 
             return Ok();
@@ -48,10 +48,13 @@ namespace TIAPI.Controllers
         [HttpPut("{DNI}")]
         public IActionResult Put(int DNI, [FromBody] ClienteDTO clienteDTO)
         {
-            var Resut = clienteService.EditarCliente(DNI, clienteDTO);
-            if (!Resut.Success)
+            var result = clienteService.EditarCliente(DNI, clienteDTO);
+            if (result.Status == 400)
             {
                 return BadRequest();
+            } else if (result.Status == 404)
+            {
+                return NotFound();
             }
             return Ok();
         }

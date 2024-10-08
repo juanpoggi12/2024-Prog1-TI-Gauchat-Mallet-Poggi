@@ -19,12 +19,10 @@ namespace TIAPI.Controllers
         public IActionResult Post([FromBody] CompraDTO compraDTO)
         {
             var Result = compraService.AgregarCompra(compraDTO);
-            if (!Result.Success && Result.Message == "Cliente no encontrado")
+            if (Result.Status == 404)
             {
                 return NotFound(Result.Message);
-            }
-
-            if (!Result.Success)
+            }else if (Result.Status == 400)
             {
                 return BadRequest(Result.Message);
             }

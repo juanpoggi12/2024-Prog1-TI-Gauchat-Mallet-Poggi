@@ -22,7 +22,7 @@ namespace TIService
                     (valor is string str && string.IsNullOrEmpty(str)) ||
                     (valor is int num && num <= 0))
                 {
-                    return new Result { Message = mensaje, Success = false };
+                    return new Result { Message = mensaje };
                 }
             }
 
@@ -36,19 +36,27 @@ namespace TIService
             var resultado = ValidarCompletitudCompra(compra);
             if (!resultado.Success)
             {
-                return new Result { Message = resultado.Message, Success = false };
+                return new Result { Message = resultado.Message, Status = 400 };
             }
+
             Producto producto = ProductoFiles.LeerProductosAJson().FirstOrDefault(x => x.Codigo == compra.Codigo);
+            if (producto == null)
+            {
+                return new Result { Message = "Producto no encontrado", Status = 404 };
+            }
+
             resultado = producto.ValidarStock(compra.CantidadComprada);
             if (!resultado.Success)
             {
-                return new Result { Message = resultado.Message, Success = false };
-            }
+                return new Result { Message = resultado.Message, Status = 400 };
+            } 
+
             Cliente cliente = ClienteFiles.LeerClienteAJson().FirstOrDefault(x => x.Dni == compra.DniCliente);
             if (cliente == null)
             {
-                return new Result { Message = "Cliente no encontrado", Success = false };
+                return new Result { Message = "Cliente no encontrado", Status = 404 };
             }
+
             compra.Longitud = cliente.Longitud;
             compra.Latitud = cliente.Latitud;
             ProductoService productoService = new ProductoService();
@@ -57,42 +65,26 @@ namespace TIService
             return new Result { Message = "La compra se agrego correctamente", Success = true };
         }
 
-        public List<CompraDTO> ObtenerCompras()
+        public static CompraDTO PasarEnityADto(Compra compra)
         {
-            List<CompraDTO> ComprasDTO = new List<CompraDTO>();
-            var lista = CompraFiles.LeerCompraAJson();
-
-            foreach (var recorrer in lista)
-            {
-                ComprasDTO.Add(PasarEnitieADto(recorrer));
-            }
-            return ComprasDTO;
-        }
-
-        public static CompraDTO PasarEnitieADto(Compra compra)
-        {
-            CompraDTO compraDTO = new CompraDTO()
+            return new CompraDTO
             {
                 CodigoProducto = compra.CodigoProducto,
                 FechaEntregaSolicitada = compra.FechaEntregaSolicitada,
                 DniCliente = compra.DniCliente,
                 CantidadComprada = compra.CantidadComprada,
             };
-
-            return compraDTO;
         }
 
         public static Compra PasarDtoAEntity(CompraDTO compraDTO)
         {
-            Compra compra = new Compra()
+            return new Compra
             {
                 CodigoProducto = compraDTO.CodigoProducto,
                 FechaEntregaSolicitada = compraDTO.FechaEntregaSolicitada,
                 DniCliente = compraDTO.DniCliente,
                 CantidadComprada = compraDTO.CantidadComprada,
             };
-
-            return compra;
         }
     }
 }

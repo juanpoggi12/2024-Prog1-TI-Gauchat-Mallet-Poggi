@@ -25,7 +25,7 @@ namespace TIService
                     (valor is string str && string.IsNullOrEmpty(str)) ||
                     (valor is int num && num <= 0))
                 {
-                    return new Result { Message = mensaje, Success = false };
+                    return new Result { Message = mensaje };
                 }
             }
 
@@ -35,7 +35,7 @@ namespace TIService
         public Result AgergarProducto(ProductoDTO productoDTO)
         {
             Producto producto = new Producto();
-            producto = PasarDtoAEntitie(productoDTO);
+            producto = PasarDtoAEntity(productoDTO);
             var Result = ValidarCompletitudProducto(producto);
             if (!Result.Success)
             {
@@ -51,39 +51,41 @@ namespace TIService
             var Result = Listado.FirstOrDefault(x => x.Codigo == Codigo);
             if (Result == null)
             {
-                return new Result { Success = false, Message = "Producto no encontrado" };
+                return new Result { Message = "Producto no encontrado" };
             }
             Result.Stock = Result.Stock + Cantidad;
             ProductoFiles.EscribirProductosAJson(Result);
             return new Result { Success = true };
         }
 
-        public ProductoDTO PasarEntitieADto(Producto producto)
+        public ProductoDTO PasarEntityADto(Producto producto)
         {
-            ProductoDTO productoDTO = new ProductoDTO();
-            productoDTO.Nombre = producto.Nombre;
-            productoDTO.Marca = producto.Marca;
-            productoDTO.PrecioUnitario = producto.PrecioUnitario;
-            productoDTO.ProfundidadCaja = producto.ProfundidadCaja;
-            productoDTO.Stock = producto.Stock;
-            productoDTO.AnchoCaja = producto.AnchoCaja;
-            productoDTO.StockMinimo = producto.StockMinimo;
-            productoDTO.AltoCaja = producto.AltoCaja;
-            return productoDTO;
+            return new ProductoDTO
+            {
+                Nombre = producto.Nombre,
+                Marca = producto.Marca,
+                PrecioUnitario = producto.PrecioUnitario,
+                ProfundidadCaja = producto.ProfundidadCaja,
+                Stock = producto.Stock,
+                AnchoCaja = producto.AnchoCaja,
+                StockMinimo = producto.StockMinimo,
+                AltoCaja = producto.AltoCaja
+            };
         }
 
-        public Producto PasarDtoAEntitie(ProductoDTO productoDTO)
+        public Producto PasarDtoAEntity(ProductoDTO productoDTO)
         {
-            Producto producto = new Producto();
-            producto.Nombre = productoDTO.Nombre;
-            producto.Marca = productoDTO.Marca;
-            producto.PrecioUnitario = productoDTO.PrecioUnitario;
-            producto.ProfundidadCaja = productoDTO.ProfundidadCaja;
-            producto.Stock = productoDTO.Stock;
-            producto.AnchoCaja = productoDTO.AnchoCaja;
-            producto.StockMinimo = productoDTO.StockMinimo;
-            producto.AltoCaja = productoDTO.AltoCaja;
-            return producto;
+            return new Producto
+            {
+                Nombre = productoDTO.Nombre,
+                Marca = productoDTO.Marca,
+                PrecioUnitario = productoDTO.PrecioUnitario,
+                ProfundidadCaja = productoDTO.ProfundidadCaja,
+                Stock = productoDTO.Stock,
+                AnchoCaja = productoDTO.AnchoCaja,
+                StockMinimo = productoDTO.StockMinimo,
+                AltoCaja = productoDTO.AltoCaja
+            };
         }
     }
 }

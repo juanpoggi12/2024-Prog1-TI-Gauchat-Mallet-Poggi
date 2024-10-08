@@ -35,11 +35,11 @@ namespace TIService
         public Result AgregarCliente(ClienteDTO clienteDTO)
         {
             Cliente cliente = new Cliente();
-            cliente = PasarDtoAEntitie(clienteDTO);
+            cliente = PasarDtoAEntity(clienteDTO);
             var resultado = ValidarCompletitudClientes(cliente);
             if (!resultado.Success)
             {
-                return new Result { Success = false, Message = resultado.Message };
+                return new Result { Message = resultado.Message };
             }
             ClienteFiles.EscribirClienteAJson(cliente);
             return new Result { Success = true };
@@ -59,13 +59,17 @@ namespace TIService
 
         public Result EditarCliente(int Dni, ClienteDTO clienteTemporalDTO)
         {
-            var clienteTemporal = PasarDtoAEntitie(clienteTemporalDTO);
+            var clienteTemporal = PasarDtoAEntity(clienteTemporalDTO);
             Cliente cliente = ClienteFiles.LeerClienteAJson().FirstOrDefault(x => x.Dni == clienteTemporal.Dni);
+            if (cliente == null)
+            {
+                return new Result { Message = "No se encontro al cliente a editar", Status = 404 };
+            }
             var resultado = ValidarCompletitudClientes(clienteTemporal);
 
-            if (cliente == null || !resultado.Success)
+            if (!resultado.Success)
             {
-                return new Result { };
+                return new Result { Message = resultado.Message, Status = 400 };
             }
             cliente.Dni = clienteTemporal.Dni;
             cliente.Nombre = clienteTemporal.Nombre;
@@ -78,7 +82,7 @@ namespace TIService
             cliente.FechaUltimaActualizacion = DateTime.Now;
             ClienteFiles.EscribirClienteAJson(cliente);
 
-            return new Result { Success = true };
+            return new Result { Success = true, Message = "El cliente se edito correctamente"};
         }
 
         public Result EliminarCliente(int dni)
@@ -101,30 +105,32 @@ namespace TIService
 
         public ClienteDTO PasarEntitieADto(Cliente cliente)
         {
-            ClienteDTO clienteDTO = new ClienteDTO();
-            clienteDTO.Dni = cliente.Dni;
-            clienteDTO.FechaDeNacimiento = cliente.FechaDeNacimiento;
-            clienteDTO.Telefono = cliente.Telefono;
-            clienteDTO.Email = cliente.Email;
-            clienteDTO.Latitud = cliente.Latitud;
-            clienteDTO.Longitud = cliente.Longitud;
-            clienteDTO.Nombre = cliente.Nombre;
-            clienteDTO.Apellido = cliente.Apellido;
-            return clienteDTO;
+            return new ClienteDTO
+            {
+                Dni = cliente.Dni,
+                FechaDeNacimiento = cliente.FechaDeNacimiento,
+                Telefono = cliente.Telefono,
+                Email = cliente.Email,
+                Latitud = cliente.Latitud,
+                Longitud = cliente.Longitud,
+                Nombre = cliente.Nombre,
+                Apellido = cliente.Apellido,
+            };
         }
 
-        public Cliente PasarDtoAEntitie(ClienteDTO clienteDTO)
+        public Cliente PasarDtoAEntity(ClienteDTO clienteDTO)
         {
-            Cliente cliente = new Cliente();
-            cliente.Dni = clienteDTO.Dni;
-            cliente.FechaDeNacimiento = clienteDTO.FechaDeNacimiento;
-            cliente.Telefono = clienteDTO.Telefono;
-            cliente.Email = clienteDTO.Email;
-            cliente.Latitud = clienteDTO.Latitud;
-            cliente.Longitud = clienteDTO.Longitud;
-            cliente.Nombre = clienteDTO.Nombre;
-            cliente.Apellido = clienteDTO.Apellido;
-            return cliente;
+            return new Cliente
+            {
+                Dni = clienteDTO.Dni,
+                FechaDeNacimiento = clienteDTO.FechaDeNacimiento,
+                Telefono = clienteDTO.Telefono,
+                Email = clienteDTO.Email,
+                Latitud = clienteDTO.Latitud,
+                Longitud = clienteDTO.Longitud,
+                Nombre = clienteDTO.Nombre,
+                Apellido = clienteDTO.Apellido,  
+            };
         }
     }
 }

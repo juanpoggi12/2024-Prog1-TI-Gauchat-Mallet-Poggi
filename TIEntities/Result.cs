@@ -6,8 +6,8 @@ namespace TIEntities
     {
         public string Message { get; set; }
         public bool Success { get; set; }
-        public int Data {  get; set; }
-        public Object objeto {  get; set; }
+        public int Status {  get; set; }
+        public Object Data {  get; set; }
 
         public Result()
         {
