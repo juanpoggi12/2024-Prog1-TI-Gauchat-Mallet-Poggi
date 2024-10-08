@@ -18,7 +18,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Enums", "Enums", "{40CCE8DE
 		EnumEstadoCompra.cs = EnumEstadoCompra.cs
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EntitiesDTO", "EntitiesDTO\EntitiesDTO.csproj", "{F84FFEBE-8F47-4072-9A44-10018A231A3F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TIEntitiesDTO", "EntitiesDTO\TIEntitiesDTO.csproj", "{F84FFEBE-8F47-4072-9A44-10018A231A3F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

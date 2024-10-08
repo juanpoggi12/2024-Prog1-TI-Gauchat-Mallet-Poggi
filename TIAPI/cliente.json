@@ -1,0 +1,15 @@
+[
+  {
+    "Dni": 123,
+    "Nombre": "juan",
+    "Apellido": "poggi",
+    "Email": "string",
+    "Telefono": 333,
+    "Longitud": 0.0,
+    "Latitud": 0.0,
+    "FechaDeNacimiento": "2024-10-08T22:28:52.804Z",
+    "FechaUltimaActualizacion": "2024-10-08T19:29:27.9621957-03:00",
+    "FechaDeEliminacion": null,
+    "FechaCreacion": "2024-10-08T19:14:23.4499238-03:00"
+  }
+]

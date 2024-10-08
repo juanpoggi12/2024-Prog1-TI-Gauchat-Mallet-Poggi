@@ -20,7 +20,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\EntitiesDTO\TIEntitiesDTO.csproj" />
-    <ProjectReference Include="..\EntitiesDTO\EntitiesDTO.csproj" />
+    <ProjectReference Include="..\EntitiesDTO\TIEntitiesDTO.csproj" />
     <ProjectReference Include="..\TIService\TIService.csproj" />
   </ItemGroup>
 

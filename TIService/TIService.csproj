@@ -19,7 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\EntitiesDTO\EntitiesDTO.csproj" />
+    <ProjectReference Include="..\EntitiesDTO\TIEntitiesDTO.csproj" />
     <ProjectReference Include="..\TIData\TIData.csproj" />
     <ProjectReference Include="..\TIEntities\TIEntities.csproj" />
   </ItemGroup>

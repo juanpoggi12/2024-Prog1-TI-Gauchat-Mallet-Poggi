@@ -60,7 +60,7 @@ namespace TIService
         public Result EditarCliente(int Dni, ClienteDTO clienteTemporalDTO)
         {
             var clienteTemporal = PasarDtoAEntity(clienteTemporalDTO);
-            Cliente cliente = ClienteFiles.LeerClienteAJson().FirstOrDefault(x => x.Dni == clienteTemporal.Dni);
+            Cliente cliente = ClienteFiles.LeerClienteAJson().FirstOrDefault(x => x.Dni == Dni);
             if (cliente == null)
             {
                 return new Result { Message = "No se encontro al cliente a editar", Status = 404 };

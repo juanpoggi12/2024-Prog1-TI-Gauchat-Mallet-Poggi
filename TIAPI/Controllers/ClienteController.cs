@@ -33,10 +33,10 @@ namespace TIAPI.Controllers
             return Ok(result);
         }
 
-        [HttpDelete("{Dni}")]
-        public IActionResult Delete(int DNI)
+        [HttpDelete("{dni:int}")]
+        public IActionResult Delete(int dni)
         {
-            var result = clienteService.EliminarCliente(DNI);
+            var result = clienteService.EliminarCliente(dni);
             if (!result.Success)
             {
                 return NotFound(result.Message);
@@ -45,18 +45,18 @@ namespace TIAPI.Controllers
             return Ok();
         }
 
-        [HttpPut("{DNI}")]
-        public IActionResult Put(int DNI, [FromBody] ClienteDTO clienteDTO)
+        [HttpPut("{dni:int}")]
+        public IActionResult Put(int dni, [FromBody] ClienteDTO clienteDTO)
         {
-            var result = clienteService.EditarCliente(DNI, clienteDTO);
+            var result = clienteService.EditarCliente(dni, clienteDTO);
             if (result.Status == 400)
             {
-                return BadRequest();
+                return BadRequest(result.Message);
             } else if (result.Status == 404)
             {
-                return NotFound();
+                return NotFound(result.Message);
             }
-            return Ok();
+            return Ok(result.Message);
         }
     }
 }
