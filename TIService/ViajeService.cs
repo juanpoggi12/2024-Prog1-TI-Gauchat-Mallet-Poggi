@@ -71,25 +71,34 @@ namespace TIService
             {
                 return new Result { Message = "Ya existe un viaje entre esas fechas", Status = 400 };
             }
-
+            List<Compra> compras = CompraFiles.LeerCompraAJson();
+            if (compras == null)
+            {
+                return new Result { Message = "No hay ninguna compra ingresada", Status = 404 };
+            }
+            return new Result { Message = "La fecha de entrega es mayor a 7 dias de la fecha de salida", Status = 400 };
             //List<Camioneta> camionetas = CamionetaFiles.LeerCamionetaAJson();
-            //List<Compra> Compras = CompraFiles.LeerCompraAJson();
+            //int sumaC1 = 0; int sumaC2 = 0; int sumaC3 = 0;
+            //double capacidadC1 = 0; double capacidadC2 = 0; double capacidadC3 = 0;
 
-            ////foreach (var Compra in Compras)
-            ////{
-            ////    if (Compra.Estado == EnumEstadoCompra.OPEN)
-            ////    {
-            ////        double Distancia = Compra.CalcularDistancia();
-            ////        List<Producto> productos = ProductoFiles.LeerProductosAJson().Where(x => x.Codigo == Compra.Codigo).ToList();
-
-            ////        Camioneta camioneta = camionetas.FirstOrDefault(x => x.DistanciaMaximaEnKm >= Distancia || );
-
-            ////        Viaje viaje = new Viaje();
-
-            ////    }
-            ////}
-
-            return new Result { Success = true, Message = "El viaje se aasigno correctamente" };
+            //foreach (var compra in compras)
+            //{
+            //    if (compra.Estado == EnumEstadoCompra.OPEN)
+            //    {
+            //        if (capacidadC1 < camionetas[0].TamañoDeCargaEnCm3 && compra.CalcularDistancia() <= camionetas[0].DistanciaMaximaEnKm)
+            //        {
+            //            capacidadC1 += ProductoFiles.LeerProductosAJson().FirstOrDefault(x => x.Codigo == compra.CodigoProducto).PasarACentimetrosCubicos();
+            //            if (capacidadC1 < camionetas[0].TamañoDeCargaEnCm3)
+            //            {
+            //                sumaC1++;
+            //            }
+            //        }
+            //        double Distancia = compra.CalcularDistancia();
+            //        List<Producto> productos = ProductoFiles.LeerProductosAJson().Where(x => x.Codigo == compra.Codigo).ToList();
+            //        Camioneta camioneta = camionetas.FirstOrDefault(x => x.DistanciaMaximaEnKm >= Distancia || );
+            //        Viaje viaje = new Viaje();
+            //    }
+            //}
         }
 
         private bool VerificarSolapamientoViajes(DateOnly fechaInicioNuevo, DateOnly fechaFinNuevo, List<Viaje> viajesExistentes)
