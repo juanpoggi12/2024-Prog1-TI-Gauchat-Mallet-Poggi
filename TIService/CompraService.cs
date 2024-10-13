@@ -19,8 +19,8 @@ namespace TIService
             foreach (var (valor, mensaje) in validacion)
             {
                 if (valor == null ||
-                    (valor is string str && string.IsNullOrEmpty(str)) ||
-                    (valor is int num && num <= 0))
+                    (valor is int num && num <= 0) ||
+                    (valor is DateTime dt && dt == default))
                 {
                     return new Result { Message = mensaje };
                 }
@@ -39,7 +39,7 @@ namespace TIService
                 return new Result { Message = resultado.Message, Status = 400 };
             }
 
-            Producto producto = ProductoFiles.LeerProductosAJson().FirstOrDefault(x => x.Codigo == compra.Codigo);
+            Producto producto = ProductoFiles.LeerProductosAJson().FirstOrDefault(x => x.Codigo == compra.CodigoProducto);
             if (producto == null)
             {
                 return new Result { Message = "Producto no encontrado", Status = 404 };

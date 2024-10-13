@@ -11,5 +11,18 @@
     "FechaUltimaActualizacion": "2024-10-08T19:29:27.9621957-03:00",
     "FechaDeEliminacion": null,
     "FechaCreacion": "2024-10-08T19:14:23.4499238-03:00"
+  },
+  {
+    "Dni": 222,
+    "Nombre": "Gabriel",
+    "Apellido": "Mallet",
+    "Email": "string",
+    "Telefono": 334,
+    "Longitud": 0.0,
+    "Latitud": 0.0,
+    "FechaDeNacimiento": "2024-10-13T20:52:20.842Z",
+    "FechaUltimaActualizacion": "2024-10-13T17:52:49.3024397-03:00",
+    "FechaDeEliminacion": null,
+    "FechaCreacion": "2024-10-13T17:52:02.6830471-03:00"
   }
 ]

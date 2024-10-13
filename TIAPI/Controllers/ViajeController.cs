@@ -23,7 +23,7 @@ namespace TIAPI.Controllers
             {
                 return BadRequest(result.Message);
             }
-            return Ok();
+            return Ok(result.Message);
         }
     }
 }

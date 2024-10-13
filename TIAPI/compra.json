@@ -1,0 +1,15 @@
+[
+  {
+    "Codigo": 1,
+    "CodigoProducto": 1,
+    "DniCliente": 123,
+    "FechaCompra": "2024-10-13T18:28:29.733113-03:00",
+    "CantidadComprada": 12,
+    "FechaEntregaSolicitada": "2024-10-13T21:27:40.902Z",
+    "Estado": 0,
+    "MontoTotal": 0.0,
+    "Latitud": 0.0,
+    "Longitud": 0.0,
+    "PrecioProducto": 0.0
+  }
+]

@@ -23,7 +23,7 @@ namespace TIAPI.Controllers
             {
                 return BadRequest(Result.Message);
             }
-            return Ok();
+            return Ok(Result.Message);
         }
 
         [HttpPut("{Codigo}")]
@@ -34,7 +34,7 @@ namespace TIAPI.Controllers
             {
                 return NotFound(Result.Message);
             }
-            return Ok();
+            return Ok(Result.Message);
         }
     }
 }

@@ -22,8 +22,10 @@ namespace TIService
             foreach (var (valor, mensaje) in validaciones)
             {
                 if (valor == null ||
-                    (valor is string str && string.IsNullOrEmpty(str)) ||
-                    (valor is int num && num <= 0))
+                    (valor is string str && string.IsNullOrWhiteSpace(str)) ||
+                    (valor is int num && num <= 0) ||
+                    (valor is double dob && dob <= 0) ||
+                    (valor is DateTime dt && dt == default))
                 {
                     return new Result { Message = mensaje };
                 }

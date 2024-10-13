@@ -11,18 +11,14 @@ namespace TIService
         {
             var validaciones = new (object valor, string mensaje)[]
             {
-                (viaje.Codigo, "Falta agregar codigo"),
-                (viaje.PatenteCamionetaAsignada, "Falta agregar Patente de la Camioneta asignada"),
                 (viaje.FechaDesde, "Falta agregar la FechaPosibleEntregaDesde"),
                 (viaje.FechaHasta, "Falta agregar la FechaPosibleEntregaHasta"),
-                (viaje.PorcentajeOcupacionCarga, "Falta agregar el porcentaje de la ocupacion de la carga"),
             };
 
             foreach (var (valor, mensaje) in validaciones)
             {
                 if (valor == null ||
-                    (valor is string str && string.IsNullOrEmpty(str)) ||
-                    (valor is int num && num <= 0))
+                    (valor is DateTime dt && dt == default))
                 {
                     return new Result { Message = mensaje };
                 }
@@ -76,7 +72,7 @@ namespace TIService
             {
                 return new Result { Message = "No hay ninguna compra ingresada", Status = 404 };
             }
-            return new Result { Message = "La fecha de entrega es mayor a 7 dias de la fecha de salida", Status = 400 };
+            return new Result { Success = true };
             //List<Camioneta> camionetas = CamionetaFiles.LeerCamionetaAJson();
             //int sumaC1 = 0; int sumaC2 = 0; int sumaC3 = 0;
             //double capacidadC1 = 0; double capacidadC2 = 0; double capacidadC3 = 0;

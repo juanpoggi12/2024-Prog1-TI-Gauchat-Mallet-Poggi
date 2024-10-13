@@ -1,4 +1,5 @@
 ﻿using EntitiesDTO;
+using System.Timers;
 using TIData;
 using TIEntities;
 
@@ -22,8 +23,9 @@ namespace TIService
             foreach (var (valor, mensaje) in validaciones)
             {
                 if (valor == null ||
-                    (valor is string str && string.IsNullOrEmpty(str)) ||
-                    (valor is int num && num <= 0))
+                    (valor is string str && string.IsNullOrWhiteSpace(str)) ||
+                    (valor is int num && num <= 0) ||
+                    (valor is double dob && dob <= 0))
                 {
                     return new Result { Message = mensaje };
                 }
@@ -42,7 +44,7 @@ namespace TIService
                 return new Result { Message = Result.Message };
             }
             ProductoFiles.EscribirProductosAJson(producto);
-            return new Result { Success = true };
+            return new Result { Success = true, Message = "El producto se agrego correctamente" };
         }
 
         public Result ActualizarStockProducto(int Codigo, int Cantidad)
@@ -55,7 +57,7 @@ namespace TIService
             }
             Result.Stock = Result.Stock + Cantidad;
             ProductoFiles.EscribirProductosAJson(Result);
-            return new Result { Success = true };
+            return new Result { Success = true, Message = "El producto se modifico correctamente" };
         }
 
         public ProductoDTO PasarEntityADto(Producto producto)
