@@ -27,14 +27,14 @@ namespace TIAPI.Controllers
         }
 
         [HttpPut("{Codigo}")]
-        public IActionResult Put(int Codigo, int Cantidad)
+        public IActionResult Put(int Codigo, int CantidadAActualizar)
         {
-            var Result = productoService.ActualizarStockProducto(Codigo, Cantidad);
+            var Result = productoService.ActualizarStockProducto(Codigo, CantidadAActualizar);
             if (!Result.Success)
             {
-                return NotFound(Result.Message);
+                return NotFound(new { message = Result.Message });
             }
-            return Ok(Result.Message);
+            return Ok(new { message = Result.Message});
         }
     }
 }

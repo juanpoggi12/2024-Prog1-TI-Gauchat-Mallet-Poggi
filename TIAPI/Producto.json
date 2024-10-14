@@ -1,25 +1,14 @@
 [
   {
-    "Codigo": 3,
-    "Nombre": "Tototot",
-    "Marca": "Tito",
-    "AltoCaja": 10.0,
-    "AnchoCaja": 15.0,
-    "ProfundidadCaja": 10.0,
-    "PrecioUnitario": 100.0,
-    "StockMinimo": 10,
-    "Stock": 25
-  },
-  {
     "Codigo": 2,
-    "Nombre": "string",
-    "Marca": "string",
+    "Nombre": "hola",
+    "Marca": "hola",
     "AltoCaja": 0.0,
     "AnchoCaja": 0.0,
     "ProfundidadCaja": 0.0,
     "PrecioUnitario": 0.0,
     "StockMinimo": 10,
-    "Stock": 36
+    "Stock": 4
   },
   {
     "Codigo": 1,
@@ -30,6 +19,17 @@
     "ProfundidadCaja": 0.0,
     "PrecioUnitario": 0.0,
     "StockMinimo": 10,
-    "Stock": 51
+    "Stock": 53
+  },
+  {
+    "Codigo": 3,
+    "Nombre": "Tototot",
+    "Marca": "Tito",
+    "AltoCaja": 10.0,
+    "AnchoCaja": 15.0,
+    "ProfundidadCaja": 10.0,
+    "PrecioUnitario": 100.0,
+    "StockMinimo": 10,
+    "Stock": 15
   }
 ]
