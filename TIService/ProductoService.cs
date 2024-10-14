@@ -60,6 +60,18 @@ namespace TIService
             return new Result { Success = true, Message = "El producto se modifico correctamente" };
         }
 
+        public List<ProductoDTO> ObtenerListaProductosConStockBajo()
+        {
+            List<Producto> Productos = ProductoFiles.LeerProductosAJson().Where(x => x.Stock < x.StockMinimo).ToList();
+            List<ProductoDTO> ProductosDTO = new List<ProductoDTO>();
+            foreach (Producto producto in Productos)
+            {
+                var ProductoDTO = PasarEntityADto(producto);
+                ProductosDTO.Add(ProductoDTO);
+            }
+            return ProductosDTO;
+        }
+
         public ProductoDTO PasarEntityADto(Producto producto)
         {
             return new ProductoDTO

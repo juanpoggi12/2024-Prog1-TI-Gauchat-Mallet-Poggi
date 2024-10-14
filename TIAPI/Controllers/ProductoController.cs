@@ -25,6 +25,12 @@ namespace TIAPI.Controllers
             }
             return Ok(Result.Message);
         }
+        [HttpGet()]
+        public IActionResult Get()
+        {
+            List<ProductoDTO> ProductosDTO = productoService.ObtenerListaProductosConStockBajo();
+            return Ok(ProductosDTO);
+        }
 
         [HttpPut("{Codigo}")]
         public IActionResult Put(int Codigo, int CantidadAActualizar)

@@ -1,35 +1,35 @@
 [
   {
     "Codigo": 2,
-    "Nombre": "hola",
-    "Marca": "hola",
-    "AltoCaja": 0.0,
-    "AnchoCaja": 0.0,
-    "ProfundidadCaja": 0.0,
-    "PrecioUnitario": 0.0,
+    "Nombre": "Coca Cola",
+    "Marca": "Coca Cola Company",
+    "AltoCaja": 20,
+    "AnchoCaja": 30,
+    "ProfundidadCaja": 20,
+    "PrecioUnitario": 100,
     "StockMinimo": 10,
     "Stock": 4
   },
   {
     "Codigo": 1,
-    "Nombre": "string",
-    "Marca": "string",
+    "Nombre": "Oreos",
+    "Marca": "Oreos",
     "AltoCaja": 0.0,
     "AnchoCaja": 0.0,
     "ProfundidadCaja": 0.0,
     "PrecioUnitario": 0.0,
     "StockMinimo": 10,
-    "Stock": 53
+    "Stock": 3
   },
   {
     "Codigo": 3,
-    "Nombre": "Tototot",
-    "Marca": "Tito",
+    "Nombre": "Rocklets",
+    "Marca": "Arcor",
     "AltoCaja": 10.0,
     "AnchoCaja": 15.0,
     "ProfundidadCaja": 10.0,
     "PrecioUnitario": 100.0,
     "StockMinimo": 10,
-    "Stock": 15
+    "Stock": 9
   }
 ]
