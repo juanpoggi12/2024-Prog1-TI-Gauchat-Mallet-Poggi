@@ -2,7 +2,13 @@ document.addEventListener("DOMContentLoaded", function () {
     fetch("http://localhost:5021/Producto")
         .then(response => {
             if (!response.ok) {
-                throw new Error("Error al obtener los productos");
+                if (response.status === 404) {
+                    // Manejar el caso cuando no hay productos con stock bajo
+                    document.getElementById("mensajeError").innerText = "No hay productos bajos de stock.";
+                    throw new Error("No hay productos bajos de stock");
+                } else {
+                    throw new Error("Error al obtener los productos");
+                }
             }
             return response.json();
         })

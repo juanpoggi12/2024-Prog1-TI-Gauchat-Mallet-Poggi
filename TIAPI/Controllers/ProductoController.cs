@@ -29,6 +29,10 @@ namespace TIAPI.Controllers
         public IActionResult Get()
         {
             List<ProductoDTO> ProductosDTO = productoService.ObtenerListaProductosConStockBajo();
+            if (ProductosDTO.Count() == 0)
+            {
+                return NotFound(new { message = "No hay productos bajos de stock" });
+            }
             return Ok(ProductosDTO);
         }
 

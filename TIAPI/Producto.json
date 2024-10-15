@@ -1,14 +1,14 @@
 [
   {
-    "Codigo": 2,
-    "Nombre": "Coca Cola",
-    "Marca": "Coca Cola Company",
-    "AltoCaja": 20.0,
-    "AnchoCaja": 30.0,
-    "ProfundidadCaja": 20.0,
+    "Codigo": 3,
+    "Nombre": "Rocklets",
+    "Marca": "Arcor",
+    "AltoCaja": 10.0,
+    "AnchoCaja": 15.0,
+    "ProfundidadCaja": 10.0,
     "PrecioUnitario": 100.0,
     "StockMinimo": 10,
-    "Stock": 4
+    "Stock": 29
   },
   {
     "Codigo": 1,
@@ -22,14 +22,14 @@
     "Stock": 3
   },
   {
-    "Codigo": 3,
-    "Nombre": "Rocklets",
-    "Marca": "Arcor",
-    "AltoCaja": 10.0,
-    "AnchoCaja": 15.0,
-    "ProfundidadCaja": 10.0,
+    "Codigo": 2,
+    "Nombre": "Coca Cola",
+    "Marca": "Coca Cola Company",
+    "AltoCaja": 20.0,
+    "AnchoCaja": 30.0,
+    "ProfundidadCaja": 20.0,
     "PrecioUnitario": 100.0,
     "StockMinimo": 10,
-    "Stock": 19
+    "Stock": 14
   }
 ]
