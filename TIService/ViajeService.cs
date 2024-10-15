@@ -115,10 +115,10 @@ namespace TIService
                         capacidades[i] += espacio;
                         compra.Estado = EnumEstadoCompra.READY_TO_DISPATCH;
                         viajesAsignados[i].Compras.Add(compra.Codigo);
-                        break; 
+                        break;
                     }
                 }
-              
+
                 if (compra.Estado == EnumEstadoCompra.OPEN)
                 {
                     compra.FechaEntregaEstimada.AddDays(14);
@@ -127,12 +127,12 @@ namespace TIService
 
             foreach (Viaje viaje in viajesAsignados)
             {
-                if (viaje.Compras.Count() != 0) { 
-                ViajeFiles.EscribirViajeAJson(viaje);
+                if (viaje.Compras.Count() != 0)
+                {
+                    ViajeFiles.EscribirViajeAJson(viaje);
                 }
             }
         }
-            
 
         public List<Compra> ObtenerCompras(DateOnly desde, DateOnly hasta)
         {
