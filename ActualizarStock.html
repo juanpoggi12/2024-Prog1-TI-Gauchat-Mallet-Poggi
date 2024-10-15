@@ -1,5 +1,4 @@
 ﻿<!DOCTYPE html>
-
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8" />
@@ -10,9 +9,7 @@
 
     <div class="Titulo">Actualizar Stock</div> <br />
     <form id="ActualizarStockForm">
-
         <fieldset>
-
             <legend> Actualizar Stock</legend>
 
             <label for="Codigo">Codigo del producto:</label> <br />
@@ -20,9 +17,13 @@
 
             <label for="CantidadAActualizar">Stock a agregar:</label> <br />
             <input type="number" id="CantidadAActualizar" name="CantidadAActualizar" /> <br />
-            <button type="submit" id="Enviar" name="Enviar">Actualizar</button> 
+            <button type="submit" id="Enviar" name="Enviar">Actualizar</button>
         </fieldset>
         <div id="responseMessage"></div>
+        
+        <div id="successGif" class="gif-container" style="display: none;">
+            <img src="StockActualizadoGif.gif" alt="Stock actualizado con éxito" />
+        </div>
     </form>
     <script src="ActualizarStock.js"></script>
 </body>

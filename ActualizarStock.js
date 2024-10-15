@@ -4,13 +4,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
     formulario.addEventListener("submit", function (event) {
         event.preventDefault();
-        const codigo = document.getElementById("Codigo").value; 
-        const cantidadAActualizar = document.getElementById("CantidadAActualizar").value;   
+
+        const codigo = document.getElementById("Codigo").value;
+        const cantidadAActualizar = document.getElementById("CantidadAActualizar").value;
+
         const stock = {
             Codigo: codigo,
             CantidadAActualizar: cantidadAActualizar
         };
-        let url = `http://localhost:5021/Producto/${codigo}?CantidadAActualizar=${cantidadAActualizar}`;    
+
+        let url = `http://localhost:5021/Producto/${codigo}?CantidadAActualizar=${cantidadAActualizar}`;
         fetch(url, {
             method: "PUT",
             headers: {
@@ -27,10 +30,14 @@ document.addEventListener("DOMContentLoaded", function () {
                 return response.text().then(text => text ? JSON.parse(text) : {});
             })
             .then(data => {
-                document.getElementById("responseMessage").innerText = "Stock actualizado con éxito";
+             
+                document.getElementById("responseMessage").innerText = "";
+                document.getElementById("successGif").style.display = "block";
             })
-            .catch(error => {               
+            .catch(error => {
+                
                 document.getElementById("responseMessage").innerText = "Hubo un error al actualizar el stock: " + error.message;
+                document.getElementById("successGif").style.display = "none";
             });
     });
 });

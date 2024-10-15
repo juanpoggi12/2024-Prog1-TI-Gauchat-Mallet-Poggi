@@ -57,3 +57,21 @@ div.Error{
  font-size:25px;
 
 }
+.gif-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 1200px; /* Ajusta el tamaño del contenedor a lo que prefieras */
+    height: 1200px;
+    margin: 20px auto; /* Centra el contenedor horizontalmente */
+    overflow: hidden; /* Recorta el contenido que se salga del contenedor */
+    border-radius: 10px; /* Opcional: para bordes redondeados */
+    position: relative; /* Asegura que el contenedor sea el relativo principal */
+}
+
+    .gif-container img {
+        width: 50%; /* Ajusta el ancho del GIF al 100% del contenedor */
+      
+
+        position: absolute;
+    }

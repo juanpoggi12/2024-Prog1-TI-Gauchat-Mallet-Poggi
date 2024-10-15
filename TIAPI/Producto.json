@@ -8,18 +8,7 @@
     "ProfundidadCaja": 10.0,
     "PrecioUnitario": 100.0,
     "StockMinimo": 10,
-    "Stock": 29
-  },
-  {
-    "Codigo": 1,
-    "Nombre": "Oreos",
-    "Marca": "Oreos",
-    "AltoCaja": 0.0,
-    "AnchoCaja": 0.0,
-    "ProfundidadCaja": 0.0,
-    "PrecioUnitario": 0.0,
-    "StockMinimo": 10,
-    "Stock": 3
+    "Stock": 34
   },
   {
     "Codigo": 2,
@@ -30,6 +19,17 @@
     "ProfundidadCaja": 20.0,
     "PrecioUnitario": 100.0,
     "StockMinimo": 10,
-    "Stock": 14
+    "Stock": 16
+  },
+  {
+    "Codigo": 1,
+    "Nombre": "Oreos",
+    "Marca": "Oreos",
+    "AltoCaja": 0.0,
+    "AnchoCaja": 0.0,
+    "ProfundidadCaja": 0.0,
+    "PrecioUnitario": 0.0,
+    "StockMinimo": 10,
+    "Stock": 34
   }
 ]
