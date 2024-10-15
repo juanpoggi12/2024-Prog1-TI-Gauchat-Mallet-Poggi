@@ -1,0 +1,20 @@
+[
+  {
+    "Patente": "AA003OD",
+    "Tipo": "DOBLE CABINA",
+    "TamañoDeCargaEnCm3": 3300,
+    "DistanciaMaximaEnKm": 350
+  },
+  {
+    "Patente": "AE718OJ",
+    "Tipo": "FURGON",
+    "TamañoDeCargaEnCm3": 5800,
+    "DistanciaMaximaEnKm": 550
+  },
+  {
+    "Patente": "AB578OE",
+    "Tipo": "PISO CABINA",
+    "TamañoDeCargaEnCm3": 6700,
+    "DistanciaMaximaEnKm": 750
+  }
+]

@@ -8,7 +8,7 @@
     "ProfundidadCaja": 10.0,
     "PrecioUnitario": 100.0,
     "StockMinimo": 10,
-    "Stock": 5
+    "Stock": 34
   },
   {
     "Codigo": 1,
@@ -19,7 +19,7 @@
     "ProfundidadCaja": 0.0,
     "PrecioUnitario": 0.0,
     "StockMinimo": 10,
-    "Stock": 39
+    "Stock": 34
   },
   {
     "Codigo": 2,
@@ -30,6 +30,6 @@
     "ProfundidadCaja": 20.0,
     "PrecioUnitario": 100.0,
     "StockMinimo": 10,
-    "Stock": 15
+    "Stock": 0
   }
 ]
