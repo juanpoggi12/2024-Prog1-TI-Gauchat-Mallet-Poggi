@@ -8,11 +8,19 @@
         public DateTime FechaCompra { get; set; }
         public int CantidadComprada { get; set; }
         public DateTime FechaEntregaSolicitada { get; set; }
+        public DateTime FechaEntregaEstimada { get; set; }
         public EnumEstadoCompra Estado { get; set; }
         public double MontoTotal { get; set; }
         public double Latitud { get; set; }
         public double Longitud { get; set; }
         public double PrecioProducto { get; set; }
+
+        public Compra()
+        {
+            MontoTotal = CalcularMontoTotal();
+            FechaCompra = DateTime.Now;
+            Estado = EnumEstadoCompra.OPEN;
+        }
 
         public double CalcularMontoTotal()
         {
@@ -27,13 +35,6 @@
         public double CalcularPorcentajeDescuento(double Monto)
         {
             return Monto * 0.75;
-        }
-
-        public Compra()
-        {
-            MontoTotal = CalcularMontoTotal();
-            FechaCompra = DateTime.Now;
-            Estado = EnumEstadoCompra.OPEN;
         }
 
         public double CalcularDistancia()
