@@ -56,7 +56,7 @@ namespace TIService
             {
                 return new Result { Message = "La fecha de entrega es mayor a 7 dias de la fecha de salida", Status = 400 };
             }
-            List<Viaje> viajes = ObtenerViajes();
+            List<Viaje> viajes = ViajeFiles.LeerViajeAJson();
             if (VerificarSolapamientoViajes(desde, hasta, viajes))
             {
                 return new Result { Message = "Ya existe un viaje entre esas fechas", Status = 400 };
@@ -91,67 +91,48 @@ namespace TIService
         public void AsignarViajes(ViajeDTO viajeDTO)
         {
             List<Compra> compras = ObtenerCompras(viajeDTO.FechaDesde, viajeDTO.FechaHasta);
-            List<Viaje> viajes = ObtenerViajes();
+            List<Viaje> viajes = ViajeFiles.LeerViajeAJson();
             List<Camioneta> camionetas = CamionetaFiles.LeerCamionetaAJson();
 
-            Viaje viajeC1 = new Viaje() { FechaDesde = viajeDTO.FechaDesde, FechaHasta = viajeDTO.FechaHasta, PatenteCamionetaAsignada = camionetas[0].Patente };
-            Viaje viajeC2 = new Viaje() { FechaDesde = viajeDTO.FechaDesde, FechaHasta = viajeDTO.FechaHasta, PatenteCamionetaAsignada = camionetas[1].Patente };
-            Viaje viajeC3 = new Viaje() { FechaDesde = viajeDTO.FechaDesde, FechaHasta = viajeDTO.FechaHasta, PatenteCamionetaAsignada = camionetas[2].Patente };
+            List<Viaje> viajesAsignados = new List<Viaje>
+    {
+          new Viaje() { FechaDesde = viajeDTO.FechaDesde, FechaHasta = viajeDTO.FechaHasta, PatenteCamionetaAsignada = camionetas[0].Patente },
+          new Viaje() { FechaDesde = viajeDTO.FechaDesde, FechaHasta = viajeDTO.FechaHasta, PatenteCamionetaAsignada = camionetas[1].Patente },
+           new Viaje() { FechaDesde = viajeDTO.FechaDesde, FechaHasta = viajeDTO.FechaHasta, PatenteCamionetaAsignada = camionetas[2].Patente }
+    };
 
-            double capacidadC1 = 0; double capacidadC2 = 0; double capacidadC3 = 0;
+            double[] capacidades = new double[camionetas.Count];
 
-            foreach (var compra in compras)
+            foreach (var compra in compras.Where(x => x.Estado == EnumEstadoCompra.OPEN))
             {
+                double espacio = (ProductoFiles.LeerProductosAJson().FirstOrDefault(x => x.Codigo == compra.CodigoProducto).PasarACentimetrosCubicos()) * compra.CantidadComprada;
+
+                for (int i = 0; i < camionetas.Count; i++)
+                {
+                    if ((capacidades[i] + espacio) <= camionetas[i].TamañoDeCargaEnCm3 &&
+                        compra.CalcularDistancia() <= camionetas[i].DistanciaMaximaEnKm)
+                    {
+                        capacidades[i] += espacio;
+                        compra.Estado = EnumEstadoCompra.READY_TO_DISPATCH;
+                        viajesAsignados[i].Compras.Add(compra.Codigo);
+                        break; 
+                    }
+                }
+              
                 if (compra.Estado == EnumEstadoCompra.OPEN)
                 {
-                    double espacio = (ProductoFiles.LeerProductosAJson().FirstOrDefault(x => x.Codigo == compra.CodigoProducto).PasarACentimetrosCubicos()) * compra.CantidadComprada;
-
-                    if ((capacidadC1 + espacio) <= camionetas[0].TamañoDeCargaEnCm3 &&
-                        compra.CalcularDistancia() <= camionetas[0].DistanciaMaximaEnKm)
-                    {
-                        capacidadC1 += espacio;
-                        compra.Estado = EnumEstadoCompra.READY_TO_DISPATCH;
-                        viajeC1.Compras.Add(compra.Codigo);
-                    }
-                    else if ((capacidadC2 + espacio) <= camionetas[1].TamañoDeCargaEnCm3 &&
-                        compra.CalcularDistancia() <= camionetas[1].DistanciaMaximaEnKm)
-                    {
-                        capacidadC2 += espacio;
-                        compra.Estado = EnumEstadoCompra.READY_TO_DISPATCH;
-                        viajeC2.Compras.Add(compra.Codigo);
-                    }
-                    else if ((capacidadC3 + espacio) <= camionetas[2].TamañoDeCargaEnCm3 &&
-                       compra.CalcularDistancia() <= camionetas[2].DistanciaMaximaEnKm)
-                    {
-                        capacidadC3 += espacio;
-                        compra.Estado = EnumEstadoCompra.READY_TO_DISPATCH;
-                        viajeC3.Compras.Add(compra.Codigo);
-                    }
-                    else
-                    {
-                        compra.FechaEntregaEstimada.AddDays(14);
-                    }
+                    compra.FechaEntregaEstimada.AddDays(14);
                 }
             }
 
-            if (viajeC1.Compras.Count() != 0)
+            foreach (Viaje viaje in viajesAsignados)
             {
-                ViajeFiles.EscribirViajeAJson(viajeC1);
-            }
-            if (viajeC2.Compras.Count() != 0)
-            {
-                ViajeFiles.EscribirViajeAJson(viajeC2);
-            }
-            if (viajeC3.Compras.Count() != 0)
-            {
-                ViajeFiles.EscribirViajeAJson(viajeC3);
+                if (viaje.Compras.Count() != 0) { 
+                ViajeFiles.EscribirViajeAJson(viaje);
+                }
             }
         }
-
-        public List<Viaje> ObtenerViajes()
-        {
-            return ViajeFiles.LeerViajeAJson().ToList();
-        }
+            
 
         public List<Compra> ObtenerCompras(DateOnly desde, DateOnly hasta)
         {
