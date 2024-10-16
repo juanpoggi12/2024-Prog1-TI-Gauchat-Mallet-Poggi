@@ -15,13 +15,6 @@
         public double Longitud { get; set; }
         public double PrecioProducto { get; set; }
 
-        public Compra()
-        {
-            MontoTotal = CalcularMontoTotal();
-            FechaCompra = DateTime.Now;
-            Estado = EnumEstadoCompra.OPEN;
-        }
-
         public double CalcularMontoTotal()
         {
             double Monto = (PrecioProducto * CantidadComprada) * 1.21;

@@ -36,7 +36,7 @@ namespace TIService
             }
 
             Result result = ManejoErores(viajeDTO.FechaDesde, viajeDTO.FechaHasta);
-            if (!resultado.Success)
+            if (!result.Success)
             {
                 return result;
             }
@@ -56,13 +56,12 @@ namespace TIService
             {
                 return new Result { Message = "La fecha de entrega es mayor a 7 dias de la fecha de salida", Status = 400 };
             }
-            List<Viaje> viajes = ViajeFiles.LeerViajeAJson();
-            if (VerificarSolapamientoViajes(desde, hasta, viajes))
+            if (VerificarSolapamientoViajes(desde, hasta))
             {
                 return new Result { Message = "Ya existe un viaje entre esas fechas", Status = 400 };
             }
             List<Compra> compras = ObtenerCompras(desde, hasta);
-            if (compras == null)
+            if (compras.Count == 0)
             {
                 return new Result { Message = "No hay ninguna compra ingresada en este rango de fechas", Status = 404 };
             }
@@ -70,22 +69,17 @@ namespace TIService
             return new Result { Success = true };
         }
 
-        private bool VerificarSolapamientoViajes(DateOnly fechaInicioNuevo, DateOnly fechaFinNuevo, List<Viaje> viajesExistentes)
+        private bool VerificarSolapamientoViajes(DateOnly fechaInicioNuevo, DateOnly fechaFinNuevo)
         {
-            foreach (var viaje in viajesExistentes)
+            List<Viaje> viajes = ViajeFiles.LeerViajeAJson();
+            foreach (var viaje in viajes)
             {
-                if (ExisteSolapamiento(fechaInicioNuevo, fechaFinNuevo, viaje.FechaDesde, viaje.FechaHasta))
+                if (!(fechaFinNuevo < viaje.FechaDesde || fechaInicioNuevo > viaje.FechaHasta))
                 {
                     return true; // Si se solapa
                 }
             }
             return false; // Si no se solapan con ningún viaje
-        }
-
-        private bool ExisteSolapamiento(DateOnly fechaInicioA, DateOnly fechaFinA, DateOnly fechaInicioB, DateOnly fechaFinB)
-        {
-            // Si no se solapan, entonces el final de A es antes del inicio de B, o el inicio de A es después del final de B.
-            return !(fechaFinA < fechaInicioB || fechaInicioA > fechaFinB);
         }
 
         public void AsignarViajes(ViajeDTO viajeDTO)
@@ -95,11 +89,11 @@ namespace TIService
             List<Camioneta> camionetas = CamionetaFiles.LeerCamionetaAJson();
 
             List<Viaje> viajesAsignados = new List<Viaje>
-    {
-          new Viaje() { FechaDesde = viajeDTO.FechaDesde, FechaHasta = viajeDTO.FechaHasta, PatenteCamionetaAsignada = camionetas[0].Patente },
-          new Viaje() { FechaDesde = viajeDTO.FechaDesde, FechaHasta = viajeDTO.FechaHasta, PatenteCamionetaAsignada = camionetas[1].Patente },
-           new Viaje() { FechaDesde = viajeDTO.FechaDesde, FechaHasta = viajeDTO.FechaHasta, PatenteCamionetaAsignada = camionetas[2].Patente }
-    };
+            {
+                new Viaje() { FechaDesde = viajeDTO.FechaDesde, FechaHasta = viajeDTO.FechaHasta, PatenteCamionetaAsignada = camionetas[0].Patente },
+                new Viaje() { FechaDesde = viajeDTO.FechaDesde, FechaHasta = viajeDTO.FechaHasta, PatenteCamionetaAsignada = camionetas[1].Patente },
+                new Viaje() { FechaDesde = viajeDTO.FechaDesde, FechaHasta = viajeDTO.FechaHasta, PatenteCamionetaAsignada = camionetas[2].Patente }
+            };
 
             double[] capacidades = new double[camionetas.Count];
 
@@ -136,8 +130,8 @@ namespace TIService
 
         public List<Compra> ObtenerCompras(DateOnly desde, DateOnly hasta)
         {
-            return CompraFiles.LeerCompraAJson().Where(x => DateOnly.FromDateTime(x.FechaEntregaSolicitada) >= desde &&
-                                                                       DateOnly.FromDateTime(x.FechaEntregaSolicitada) <= hasta).ToList();
+            return CompraFiles.LeerCompraAJson().Where(x => DateOnly.FromDateTime(x.FechaEntregaEstimada) >= desde &&
+                                                            DateOnly.FromDateTime(x.FechaEntregaEstimada) <= hasta).ToList();
         }
     }
 }

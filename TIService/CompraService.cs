@@ -6,7 +6,7 @@ namespace TIService
 {
     public class CompraService
     {
-        public Result ValidarCompletitudCompra(Compra compra)
+        public Result ValidarCompletitudCompra(CompraDTO compra)
         {
             var validacion = new (object valor, string mensaje)[]
             {
@@ -31,13 +31,17 @@ namespace TIService
 
         public Result AgregarCompra(CompraDTO compraDTO)
         {
-            Compra compra = new Compra();
-            compra = PasarDtoAEntity(compraDTO);
-            var resultado = ValidarCompletitudCompra(compra);
+            var resultado = ValidarCompletitudCompra(compraDTO);
             if (!resultado.Success)
             {
                 return new Result { Message = resultado.Message, Status = 400 };
             }
+
+            Compra compra = PasarDtoAEntity(compraDTO);
+            compra.MontoTotal = compra.CalcularMontoTotal();
+            compra.FechaCompra = DateTime.Now;
+            compra.Estado = EnumEstadoCompra.OPEN;
+            compra.FechaEntregaEstimada = compra.FechaEntregaSolicitada;
 
             Producto producto = ProductoFiles.LeerProductosAJson().FirstOrDefault(x => x.Codigo == compra.CodigoProducto);
             if (producto == null)
