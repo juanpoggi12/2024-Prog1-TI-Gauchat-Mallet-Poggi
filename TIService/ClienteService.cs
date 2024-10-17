@@ -105,7 +105,7 @@ namespace TIService
             return new Result { Success = true };
         }
 
-        public ClienteDTO PasarEntitieADto(Cliente cliente)
+        private ClienteDTO PasarEntitieADto(Cliente cliente)
         {
             return new ClienteDTO
             {
@@ -120,7 +120,7 @@ namespace TIService
             };
         }
 
-        public Cliente PasarDtoAEntity(ClienteDTO clienteDTO)
+        private Cliente PasarDtoAEntity(ClienteDTO clienteDTO)
         {
             return new Cliente
             {

@@ -7,7 +7,7 @@ namespace TIService
 {
     public class ProductoService
     {
-        public Result ValidarCompletitudProducto(Producto producto)
+        private Result ValidarCompletitudProducto(Producto producto)
         {
             var validaciones = new (object valor, string mensaje)[]
             {
@@ -72,7 +72,7 @@ namespace TIService
             return ProductosDTO;
         }
 
-        public ProductoDTO PasarEntityADto(Producto producto)
+        private ProductoDTO PasarEntityADto(Producto producto)
         {
             return new ProductoDTO
             {
@@ -87,7 +87,7 @@ namespace TIService
             };
         }
 
-        public Producto PasarDtoAEntity(ProductoDTO productoDTO)
+        private Producto PasarDtoAEntity(ProductoDTO productoDTO)
         {
             return new Producto
             {

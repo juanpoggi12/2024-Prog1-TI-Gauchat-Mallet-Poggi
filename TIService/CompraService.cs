@@ -6,7 +6,7 @@ namespace TIService
 {
     public class CompraService
     {
-        public Result ValidarCompletitudCompra(CompraDTO compra)
+        private Result ValidarCompletitudCompra(CompraDTO compra)
         {
             var validacion = new (object valor, string mensaje)[]
             {
@@ -31,16 +31,14 @@ namespace TIService
 
         public Result AgregarCompra(CompraDTO compraDTO)
         {
+            Compra compra = new Compra();
+            compra = PasarDtoAEntity(compraDTO);
+
             var resultado = ValidarCompletitudCompra(compraDTO);
             if (!resultado.Success)
             {
                 return new Result { Message = resultado.Message, Status = 400 };
             }
-
-            Compra compra = PasarDtoAEntity(compraDTO);
-            compra.MontoTotal = compra.CalcularMontoTotal();
-            compra.FechaCompra = DateTime.Now;
-            compra.Estado = EnumEstadoCompra.OPEN;
             compra.FechaEntregaEstimada = compra.FechaEntregaSolicitada;
 
             Producto producto = ProductoFiles.LeerProductosAJson().FirstOrDefault(x => x.Codigo == compra.CodigoProducto);
@@ -53,7 +51,9 @@ namespace TIService
             if (!resultado.Success)
             {
                 return new Result { Message = resultado.Message, Status = 400 };
-            } 
+            }
+            compra.PrecioProducto = producto.PrecioUnitario;
+            compra.MontoTotal = compra.CalcularMontoTotal();
 
             Cliente cliente = ClienteFiles.LeerClienteAJson().FirstOrDefault(x => x.Dni == compra.DniCliente);
             if (cliente == null)
@@ -69,7 +69,7 @@ namespace TIService
             return new Result { Message = "La compra se agrego correctamente", Success = true };
         }
 
-        public static CompraDTO PasarEnityADto(Compra compra)
+        private static CompraDTO PasarEnityADto(Compra compra)
         {
             return new CompraDTO
             {
@@ -80,7 +80,7 @@ namespace TIService
             };
         }
 
-        public static Compra PasarDtoAEntity(CompraDTO compraDTO)
+        private static Compra PasarDtoAEntity(CompraDTO compraDTO)
         {
             return new Compra
             {

@@ -46,7 +46,7 @@ namespace TIService
             return new Result { Success = true, Message = "El viaje se cargo correctamente" };
         }
 
-        public Result ManejoErores(DateOnly desde, DateOnly hasta)
+        private Result ManejoErores(DateOnly desde, DateOnly hasta)
         {
             if (desde < DateOnly.FromDateTime(DateTime.Now))
             {
@@ -82,7 +82,7 @@ namespace TIService
             return false; // Si no se solapan con ningún viaje
         }
 
-        public void AsignarViajes(ViajeDTO viajeDTO)
+        private void AsignarViajes(ViajeDTO viajeDTO)
         {
             List<Compra> compras = ObtenerCompras(viajeDTO.FechaDesde, viajeDTO.FechaHasta);
             List<Viaje> viajes = ViajeFiles.LeerViajeAJson();
@@ -128,7 +128,7 @@ namespace TIService
             }
         }
 
-        public List<Compra> ObtenerCompras(DateOnly desde, DateOnly hasta)
+        private List<Compra> ObtenerCompras(DateOnly desde, DateOnly hasta)
         {
             return CompraFiles.LeerCompraAJson().Where(x => DateOnly.FromDateTime(x.FechaEntregaEstimada) >= desde &&
                                                             DateOnly.FromDateTime(x.FechaEntregaEstimada) <= hasta).ToList();

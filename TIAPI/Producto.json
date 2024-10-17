@@ -30,6 +30,17 @@
     "ProfundidadCaja": 0.0,
     "PrecioUnitario": 0.0,
     "StockMinimo": 10,
-    "Stock": 17
+    "Stock": 9
+  },
+  {
+    "Codigo": 4,
+    "Nombre": "Coca Cola",
+    "Marca": "Coca Cola Company",
+    "AltoCaja": 20.0,
+    "AnchoCaja": 30.0,
+    "ProfundidadCaja": 20.0,
+    "PrecioUnitario": 10.0,
+    "StockMinimo": 10,
+    "Stock": 1000
   }
 ]
