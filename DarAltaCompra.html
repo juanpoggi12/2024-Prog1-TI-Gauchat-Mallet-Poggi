@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>DarAltaCompra</title>
+    <link rel="stylesheet" href="Styles.css" />
+</head>
+<body>
+<div class="Titulo">Dar de alta una compra</div>
+
+    <form id="AltaCompra">
+        <fieldset>
+            <legend class="Principal">Realizar Compra</legend>
+            <label for="CodigoProducto">Codigo del producto:</label> <br />
+            <input type="number" id="CodigoProducto" name="CodigoProducto" /> <br />
+
+            <label for="DniCliente">Dni:</label> <br />
+            <input type="number" id="DniCliente" name="DniCliente" /> <br />
+
+            <label for="CantidadComprada">Cantidad:</label> <br />
+            <input type="number" id="CantidadComprada" name="CantidadComprada" /> <br />
+
+            <label for="FechaEntregaSolicitada">Fecha de entrega:</label> <br />
+            <input type="date" id="FechaEntregaSolicitada" name="FechaEntregaSolicitada" /> <br /> <br />
+            <button type="submit">Enviar</button>
+        </fieldset>
+
+        <div id="Respuesta"></div>
+    </form>
+    <script src="DarAltaCompra.js"></script>
+</body>
+</html>

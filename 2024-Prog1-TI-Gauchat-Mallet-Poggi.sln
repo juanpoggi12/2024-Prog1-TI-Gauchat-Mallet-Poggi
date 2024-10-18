@@ -29,12 +29,14 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ActualizarStockHTMLCSSJS", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "VerProductosStockHTMLCSSJS", "VerProductosStockHTMLCSSJS", "{38E862D0-9712-44CC-BBA7-0B7D5D1EA659}"
 	ProjectSection(SolutionItems) = preProject
-		StockMinimoProductos.js = StockMinimoProductos.js
 		StockMinimoProductos.html = StockMinimoProductos.html
+		StockMinimoProductos.js = StockMinimoProductos.js
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Elementos de la solución", "Elementos de la solución", "{B1F9E725-09C6-48A0-B3EE-674DF03F3862}"
 	ProjectSection(SolutionItems) = preProject
+		DarAltaCompra.html = DarAltaCompra.html
+		DarAltaCompra.js = DarAltaCompra.js
 		PaginaPrincipal.html = PaginaPrincipal.html
 	EndProjectSection
 EndProject

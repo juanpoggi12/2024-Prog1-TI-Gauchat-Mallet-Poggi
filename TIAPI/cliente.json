@@ -4,7 +4,7 @@
     "Nombre": "juan",
     "Apellido": "poggi",
     "Email": "string",
-    "Telefono": 333,
+    "Telefono": "333",
     "Longitud": 0.0,
     "Latitud": 0.0,
     "FechaDeNacimiento": "2024-10-08T22:28:52.804Z",
@@ -17,12 +17,25 @@
     "Nombre": "Gabriel",
     "Apellido": "Mallet",
     "Email": "string",
-    "Telefono": 334,
+    "Telefono": "334",
     "Longitud": 0.0,
     "Latitud": 0.0,
     "FechaDeNacimiento": "2024-10-13T20:52:20.842Z",
     "FechaUltimaActualizacion": "2024-10-13T17:52:49.3024397-03:00",
     "FechaDeEliminacion": null,
     "FechaCreacion": "2024-10-13T17:52:02.6830471-03:00"
+  },
+  {
+    "Dni": 45950945,
+    "Nombre": "Nicolas",
+    "Apellido": "Gauchat",
+    "Email": "m@gmail.com",
+    "Telefono": "3492443344",
+    "Longitud": -61.0,
+    "Latitud": -41.0,
+    "FechaDeNacimiento": "2004-09-03T12:07:27.834Z",
+    "FechaUltimaActualizacion": null,
+    "FechaDeEliminacion": null,
+    "FechaCreacion": "2024-10-18T09:08:25.5653796-03:00"
   }
 ]

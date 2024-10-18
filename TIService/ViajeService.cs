@@ -134,8 +134,8 @@ namespace TIService
 
         private List<Compra> ObtenerCompras(DateOnly desde, DateOnly hasta)
         {
-            return CompraFiles.LeerCompraAJson().Where(x => DateOnly.FromDateTime(x.FechaEntregaEstimada) >= desde &&
-                                                            DateOnly.FromDateTime(x.FechaEntregaEstimada) <= hasta).ToList();
+            return CompraFiles.LeerCompraAJson().Where(x => x.FechaEntregaEstimada >= desde &&
+                                                            x.FechaEntregaEstimada <= hasta).ToList();
         }
     }
 }
