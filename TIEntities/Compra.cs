@@ -5,10 +5,10 @@
         public int Codigo { get; set; }
         public int CodigoProducto { get; set; }
         public int DniCliente { get; set; }
-        public DateTime FechaCompra { get; set; }
+        public DateOnly FechaCompra { get; set; }
         public int CantidadComprada { get; set; }
-        public DateTime FechaEntregaSolicitada { get; set; }
-        public DateTime FechaEntregaEstimada { get; set; }
+        public DateOnly FechaEntregaSolicitada { get; set; }
+        public DateOnly FechaEntregaEstimada { get; set; }
         public EnumEstadoCompra Estado { get; set; }
         public double MontoTotal { get; set; }
         public double Latitud { get; set; }
@@ -18,7 +18,7 @@
 
         public Compra()
         {
-            FechaCompra = DateTime.Now;
+            FechaCompra = DateOnly.FromDateTime(DateTime.Now);
             Estado = EnumEstadoCompra.OPEN;
         }
         public double CalcularMontoTotal()

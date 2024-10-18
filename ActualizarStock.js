@@ -21,23 +21,23 @@ document.addEventListener("DOMContentLoaded", function () {
             },
             body: JSON.stringify(stock)
         })
-            .then(response => {
-                if (!response.ok) {
-                    return response.text().then(text => {
-                        throw new Error(`Error al actualizar el producto: ${text}`);
-                    });
-                }
-                return response.text().then(text => text ? JSON.parse(text) : {});
-            })
+        then(response => {
+            if (!response.ok) {
+                return response.text().then(text => {
+                    throw new Error(`Error al actualizar el producto: ${text}`);
+                });
+            }
+            return response.text().then(text => text ? JSON.parse(text) : {});
+        })
             .then(data => {
-             
+
                 document.getElementById("responseMessage").innerText = "";
                 document.getElementById("successGif").style.display = "block";
             })
-            .catch(error => {
-                
-                document.getElementById("responseMessage").innerText = "Hubo un error al actualizar el stock: " + error.message;
-                document.getElementById("successGif").style.display = "none";
-            });
+                .catch (error => {
+
+                    document.getElementById("responseMessage").innerText = "Hubo un error al actualizar el stock: " + error.message;
+                    document.getElementById("successGif").style.display = "none";
+                });
     });
 });
