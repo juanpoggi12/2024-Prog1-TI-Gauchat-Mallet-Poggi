@@ -1,6 +1,6 @@
 [
   {
-    "Codigo": 2,
+    "Codigo": 1,
     "Nombre": "Coca Cola",
     "Marca": "Coca Cola Company",
     "AltoCaja": 20.0,
@@ -11,7 +11,7 @@
     "Stock": 0
   },
   {
-    "Codigo": 3,
+    "Codigo": 2,
     "Nombre": "Rocklets",
     "Marca": "Arcor",
     "AltoCaja": 10.0,
@@ -22,25 +22,14 @@
     "Stock": 29
   },
   {
-    "Codigo": 4,
-    "Nombre": "Coca Cola",
-    "Marca": "Coca Cola Company",
+    "Codigo": 3,
+    "Nombre": "Oreo",
+    "Marca": "Arcor",
     "AltoCaja": 20.0,
     "AnchoCaja": 30.0,
     "ProfundidadCaja": 20.0,
     "PrecioUnitario": 10.0,
     "StockMinimo": 10,
     "Stock": 1000
-  },
-  {
-    "Codigo": 1,
-    "Nombre": "Oreos",
-    "Marca": "Oreos",
-    "AltoCaja": 0.0,
-    "AnchoCaja": 0.0,
-    "ProfundidadCaja": 0.0,
-    "PrecioUnitario": 0.0,
-    "StockMinimo": 10,
-    "Stock": 7
   }
 ]
