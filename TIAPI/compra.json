@@ -124,5 +124,19 @@
     "Latitud": 0.0,
     "Longitud": 0.0,
     "PrecioProducto": 10.0
+  },
+  {
+    "Codigo": 10,
+    "CodigoProducto": 3,
+    "DniCliente": 45950945,
+    "FechaCompra": "2024-10-19T17:48:36.8359967-03:00",
+    "CantidadComprada": 10,
+    "FechaEntregaSolicitada": "2024-10-25T00:00:00",
+    "FechaEntregaEstimada": "2024-10-25T00:00:00",
+    "Estado": 0,
+    "MontoTotal": 90.75,
+    "Latitud": -35.0,
+    "Longitud": -67.0,
+    "PrecioProducto": 10.0
   }
 ]

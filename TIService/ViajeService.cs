@@ -46,9 +46,9 @@ namespace TIService
             return new Result { Success = true, Message = "El viaje se cargo correctamente" };
         }
 
-        private Result ManejoErores(DateOnly desde, DateOnly hasta)
+        private Result ManejoErores(DateTime desde, DateTime hasta)
         {
-            if (desde < DateOnly.FromDateTime(DateTime.Now))
+            if (desde < DateTime.Now)
             {
                 return new Result { Message = "La fecha de inicio es menor a la actual", Status = 400 };
             }
@@ -69,7 +69,7 @@ namespace TIService
             return new Result { Success = true };
         }
 
-        private bool VerificarSolapamientoViajes(DateOnly fechaInicioNuevo, DateOnly fechaFinNuevo)
+        private bool VerificarSolapamientoViajes(DateTime fechaInicioNuevo, DateTime fechaFinNuevo)
         {
             List<Viaje> viajes = ViajeFiles.LeerViajeAJson();
             foreach (var viaje in viajes)
@@ -128,7 +128,7 @@ namespace TIService
             }
         }
 
-        private List<Compra> ObtenerCompras(DateOnly desde, DateOnly hasta)
+        private List<Compra> ObtenerCompras(DateTime desde, DateTime hasta)
         {
             return CompraFiles.LeerCompraAJson().Where(x => x.FechaEntregaEstimada >= desde &&
                                                             x.FechaEntregaEstimada <= hasta).ToList();

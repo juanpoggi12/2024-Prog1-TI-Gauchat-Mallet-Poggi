@@ -8,7 +8,7 @@ namespace EntitiesDTO
 {
     public class ViajeDTO
     {
-        public DateOnly FechaDesde { get; set; }
-        public DateOnly FechaHasta { get; set; }
+        public DateTime FechaDesde { get; set; }
+        public DateTime FechaHasta { get; set; }
     }
 }
