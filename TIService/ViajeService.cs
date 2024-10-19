@@ -61,11 +61,7 @@ namespace TIService
                 return new Result { Message = "Ya existe un viaje entre esas fechas", Status = 400 };
             }
             List<Compra> compras = ObtenerCompras(desde, hasta);
-<<<<<<< HEAD
-            if (compras.Count == 0)
-=======
             if (compras.Count() == 0)
->>>>>>> a85cfe4 (Actualizacion 15)
             {
                 return new Result { Message = "No hay ninguna compra ingresada en este rango de fechas", Status = 404 };
             }

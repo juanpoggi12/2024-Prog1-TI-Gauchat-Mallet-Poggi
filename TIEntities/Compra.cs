@@ -39,8 +39,8 @@
         public double CalcularDistancia()
         {
             double RadioTierraKm = 6371;
-            double longitud1 = -61.49;
-            double latitud1 = -31.25;
+            double longitud1 = -61.4867;
+            double latitud1 = -31.25033;
             // Convertir las latitudes y longitudes de grados a radianes
             double radLatitud1 = GradosARadianes(latitud1);
             double radLongitud1 = GradosARadianes(longitud1);
