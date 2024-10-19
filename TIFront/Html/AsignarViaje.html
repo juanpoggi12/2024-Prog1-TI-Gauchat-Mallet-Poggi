@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Nuevo Viaje</title>
+    <link rel="stylesheet" href="../Css/Styles.css" />
+</head>
+<body>
+    <div class="Titulo">Ingresar viaje nuevo</div>
+    <form id="NuevoViaje">
+        <fieldset>
+            <legend class="Principal">Nuevo viaje</legend>
+
+            <label for="FechaDesde">Feche desde:</label><br />
+            <input type="date" id="FechaDesde" name="FechaDesde" /><br />
+
+            <label for="FechaHasta">Feche hasta:</label><br />
+            <input type="date" id="FechaHasta" name="FechaHasta" /><br />
+            <button type="submit">Enviar</button>
+        </fieldset>
+        <div id="Respuesta"></div>
+    </form>
+
+    <script src="../Javascript/AsignarViaje.js"></script>
+</body>
+</html>

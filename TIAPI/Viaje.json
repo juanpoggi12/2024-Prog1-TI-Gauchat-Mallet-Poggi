@@ -1,34 +1,12 @@
 [
   {
     "Codigo": 0,
-    "PatenteCamionetaAsignada": 0,
-    "FechaDesde": "2024-10-13",
-    "FechaHasta": "2024-10-13",
+    "PatenteCamionetaAsignada": "AA003OD",
+    "FechaDesde": "2024-10-20T00:00:00",
+    "FechaHasta": "2024-10-26T00:00:00",
     "PorcentajeOcupacionCarga": 0.0,
-    "CodigoCompras": null
-  },
-  {
-    "Codigo": 1,
-    "PatenteCamionetaAsignada": 0,
-    "FechaDesde": "2024-09-13",
-    "FechaHasta": "2024-09-13",
-    "PorcentajeOcupacionCarga": 0.0,
-    "CodigoCompras": null
-  },
-  {
-    "Codigo": 2,
-    "PatenteCamionetaAsignada": 0,
-    "FechaDesde": "2022-09-13",
-    "FechaHasta": "2022-09-13",
-    "PorcentajeOcupacionCarga": 0.0,
-    "CodigoCompras": null
-  },
-  {
-    "Codigo": 3,
-    "PatenteCamionetaAsignada": 0,
-    "FechaDesde": "2024-10-13",
-    "FechaHasta": "2024-10-13",
-    "PorcentajeOcupacionCarga": 0.0,
-    "CodigoCompras": null
+    "Compras": [
+      2
+    ]
   }
 ]

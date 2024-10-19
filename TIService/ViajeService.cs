@@ -97,7 +97,7 @@ namespace TIService
 
             double[] capacidades = new double[camionetas.Count];
 
-            foreach (var compra in compras.Where(x => x.Estado == EnumEstadoCompra.OPEN))
+            foreach (Compra compra in compras.Where(x => x.Estado == EnumEstadoCompra.OPEN))
             {
                 double espacio = (ProductoFiles.LeerProductosAJson().FirstOrDefault(x => x.Codigo == compra.CodigoProducto).PasarACentimetrosCubicos()) * compra.CantidadComprada;
 

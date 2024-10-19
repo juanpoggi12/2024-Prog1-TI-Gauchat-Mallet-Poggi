@@ -1,14 +1,14 @@
 [
   {
-    "Codigo": 1,
-    "Nombre": "Coca Cola",
-    "Marca": "Coca Cola Company",
+    "Codigo": 3,
+    "Nombre": "Oreo",
+    "Marca": "Arcor",
     "AltoCaja": 20.0,
     "AnchoCaja": 30.0,
     "ProfundidadCaja": 20.0,
-    "PrecioUnitario": 100.0,
+    "PrecioUnitario": 10.0,
     "StockMinimo": 10,
-    "Stock": 2000
+    "Stock": 980
   },
   {
     "Codigo": 2,
@@ -19,17 +19,17 @@
     "ProfundidadCaja": 10.0,
     "PrecioUnitario": 100.0,
     "StockMinimo": 10,
-    "Stock": 1000
+    "Stock": 998
   },
   {
-    "Codigo": 3,
-    "Nombre": "Oreo",
-    "Marca": "Arcor",
+    "Codigo": 1,
+    "Nombre": "Coca Cola",
+    "Marca": "Coca Cola Company",
     "AltoCaja": 20.0,
     "AnchoCaja": 30.0,
     "ProfundidadCaja": 20.0,
-    "PrecioUnitario": 10.0,
+    "PrecioUnitario": 100.0,
     "StockMinimo": 10,
-    "Stock": 980
+    "Stock": 1979
   }
 ]

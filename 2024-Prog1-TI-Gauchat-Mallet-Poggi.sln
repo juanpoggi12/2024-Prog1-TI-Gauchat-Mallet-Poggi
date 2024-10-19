@@ -20,27 +20,31 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Enums", "Enums", "{40CCE8DE
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TIEntitiesDTO", "EntitiesDTO\TIEntitiesDTO.csproj", "{F84FFEBE-8F47-4072-9A44-10018A231A3F}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ActualizarStockHTMLCSSJS", "ActualizarStockHTMLCSSJS", "{E35D7B8D-19DF-46DA-A835-D136751A8767}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TITesting", "TITesting\TITesting.csproj", "{185B6E4C-C230-449D-9330-7F0A5A2D480B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TIFront", "TIFront", "{91580706-E937-45FD-BC18-999D9BAD754D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "HTML", "HTML", "{4985C702-08ED-4458-9DAA-759942AA7B5A}"
 	ProjectSection(SolutionItems) = preProject
-		ActualizarStock.html = ActualizarStock.html
-		ActualizarStock.js = ActualizarStock.js
-		Styles.css = Styles.css
+		TIFront\Html\ActualizarStock.html = TIFront\Html\ActualizarStock.html
+		TIFront\Html\AsignarViaje.html = TIFront\Html\AsignarViaje.html
+		TIFront\Html\DarAltaCompra.html = TIFront\Html\DarAltaCompra.html
+		TIFront\Html\PaginaPrincipal.html = TIFront\Html\PaginaPrincipal.html
+		TIFront\Html\StockMinimoProductos.html = TIFront\Html\StockMinimoProductos.html
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "VerProductosStockHTMLCSSJS", "VerProductosStockHTMLCSSJS", "{38E862D0-9712-44CC-BBA7-0B7D5D1EA659}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CSS", "CSS", "{B1396BA4-1B84-44C0-B15B-4D5942F7AE82}"
 	ProjectSection(SolutionItems) = preProject
-		StockMinimoProductos.html = StockMinimoProductos.html
-		StockMinimoProductos.js = StockMinimoProductos.js
+		TIFront\Css\Styles.css = TIFront\Css\Styles.css
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Elementos de la solución", "Elementos de la solución", "{B1F9E725-09C6-48A0-B3EE-674DF03F3862}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "JavaScript", "JavaScript", "{4DDFD1B7-C3EE-45A5-955E-8627FBFDBF25}"
 	ProjectSection(SolutionItems) = preProject
-		DarAltaCompra.html = DarAltaCompra.html
-		DarAltaCompra.js = DarAltaCompra.js
-		PaginaPrincipal.html = PaginaPrincipal.html
+		TIFront\Javascript\ActualizarStock.js = TIFront\Javascript\ActualizarStock.js
+		TIFront\Javascript\AsignarViaje.js = TIFront\Javascript\AsignarViaje.js
+		TIFront\Javascript\DarAltaCompra.js = TIFront\Javascript\DarAltaCompra.js
+		TIFront\Javascript\StockMinimoProductos.js = TIFront\Javascript\StockMinimoProductos.js
 	EndProjectSection
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TITesting", "TITesting\TITesting.csproj", "{185B6E4C-C230-449D-9330-7F0A5A2D480B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -79,6 +83,11 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{4985C702-08ED-4458-9DAA-759942AA7B5A} = {91580706-E937-45FD-BC18-999D9BAD754D}
+		{B1396BA4-1B84-44C0-B15B-4D5942F7AE82} = {91580706-E937-45FD-BC18-999D9BAD754D}
+		{4DDFD1B7-C3EE-45A5-955E-8627FBFDBF25} = {91580706-E937-45FD-BC18-999D9BAD754D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {BF23ED08-3E25-4ED5-81A7-D9FEBAAB580E}

@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
             },
             body: JSON.stringify(stock)
         })
-        then(response => {
+        .then(response => {
             if (!response.ok) {
                 return response.text().then(text => {
                     throw new Error(`Error al actualizar el producto: ${text}`);
