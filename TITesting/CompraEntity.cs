@@ -9,7 +9,7 @@ using TIEntities;
 
 namespace TITesting
 {
-    public class CompraEntityTest
+    public class CompraEntity
     {
         [SetUp]
         public void Setup()
@@ -17,7 +17,15 @@ namespace TITesting
         }
 
         [Test]
-        public void CompraOkey()
+        public void GradosARadianesTest()
+        {
+            double resultado = Compra.GradosARadianes(10);
+
+            Assert.That(resultado, Is.EqualTo(0.17453292519943295));
+        }
+
+        [Test]
+        public void CalcularDistanciaTest()
         {
             Compra compra = new Compra()
             { 
