@@ -1,6 +1,6 @@
 namespace TITesting
 {
-    public class Tests
+    public class ViajeService
     {
         [SetUp]
         public void Setup()
