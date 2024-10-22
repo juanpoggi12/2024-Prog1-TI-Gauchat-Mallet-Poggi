@@ -31,14 +31,14 @@ namespace TIService
 
         public Result AgregarCompra(CompraDTO compraDTO)
         {
-            Compra compra = new Compra();
-            compra = PasarDtoAEntity(compraDTO);
-
             var resultado = ValidarCompletitudCompra(compraDTO);
             if (!resultado.Success)
             {
                 return new Result { Message = resultado.Message, Status = 400 };
             }
+
+            Compra compra = new Compra();
+            compra = PasarDtoAEntity(compraDTO);
             compra.FechaEntregaEstimada = compra.FechaEntregaSolicitada;
 
             Producto producto = ProductoFiles.LeerProductosAJson().FirstOrDefault(x => x.Codigo == compra.CodigoProducto);
