@@ -106,9 +106,11 @@ namespace TIService
                     if ((capacidades[i] + espacio) <= camionetas[i].TamañoDeCargaEnCm3 &&
                         compra.CalcularDistancia() <= camionetas[i].DistanciaMaximaEnKm)
                     {
-                        capacidades[i] += espacio;
+                        capacidades[i] += espacio;                      
                         compra.Estado = EnumEstadoCompra.READY_TO_DISPATCH;
+                        CompraFiles.EscribirCompraAJson(compra);
                         viajesAsignados[i].Compras.Add(compra.Codigo);
+                        viajesAsignados[i].PorcentajeOcupacionCarga = (capacidades[i] * 100) / camionetas[i].TamañoDeCargaEnCm3;
                         break;
                     }
                 }

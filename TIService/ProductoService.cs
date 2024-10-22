@@ -7,7 +7,7 @@ namespace TIService
 {
     public class ProductoService
     {
-        private Result ValidarCompletitudProducto(Producto producto)
+        public Result ValidarCompletitudProducto(Producto producto)
         {
             var validaciones = new (object valor, string mensaje)[]
             {

@@ -5,7 +5,7 @@ namespace TIData
 {
     public class CompraFiles
     {
-        private static string rutaArchivo = Path.GetFullPath("D:\\Universidad\\2do año\\Programacion l\\Trabajo-Final\\TIAPI\\compra.json");
+        private static string rutaArchivo = Path.GetFullPath("compra.json");
 
         public static void EscribirCompraAJson(Compra compra)
         {
