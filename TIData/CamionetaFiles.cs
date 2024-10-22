@@ -5,7 +5,7 @@ namespace TIData
 {
     public class CamionetaFiles
     {
-        private static string rutaArchivo = Path.GetFullPath("Camioneta.json");
+        private static string rutaArchivo = Path.GetFullPath("D:\\Universidad\\2do año\\Programacion l\\Trabajo-Final\\TIAPI\\camioneta.Json");
 
         public static List<Camioneta> LeerCamionetaAJson()
         {

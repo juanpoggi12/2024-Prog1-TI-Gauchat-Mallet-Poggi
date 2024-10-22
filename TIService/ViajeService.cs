@@ -88,7 +88,7 @@ namespace TIService
             List<Viaje> viajes = ViajeFiles.LeerViajeAJson();
             List<Camioneta> camionetas = CamionetaFiles.LeerCamionetaAJson();
 
-            List<Viaje> viajesAsignados = new List<Viaje>
+            List<Viaje> viajesAsignados = new List<Viaje>()
             {
                 new Viaje() { FechaDesde = viajeDTO.FechaDesde, FechaHasta = viajeDTO.FechaHasta, PatenteCamionetaAsignada = camionetas[0].Patente },
                 new Viaje() { FechaDesde = viajeDTO.FechaDesde, FechaHasta = viajeDTO.FechaHasta, PatenteCamionetaAsignada = camionetas[1].Patente },
