@@ -19,6 +19,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\EntitiesDTO\TIEntitiesDTO.csproj" />
+    <ProjectReference Include="..\TIData\TIData.csproj" />
     <ProjectReference Include="..\TIEntities\TIEntities.csproj" />
     <ProjectReference Include="..\TIService\TIService.csproj" />
   </ItemGroup>
