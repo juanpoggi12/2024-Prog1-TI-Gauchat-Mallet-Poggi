@@ -19,9 +19,9 @@ namespace TIAPI.Controllers
         public IActionResult Post([FromBody] ProductoDTO productoDTO)
         {
             var Result = productoService.AgergarProducto(productoDTO);
-            if (!Result.Success)
+            if (!ModelState.IsValid)
             {
-                return BadRequest(Result.Message);
+                return BadRequest(ModelState);
             }
             return Ok(Result.Message);
         }

@@ -19,6 +19,11 @@ namespace TIAPI.Controllers
         public IActionResult Post([FromBody] CompraDTO compraDTO)
         {
             var Result = compraService.AgregarCompra(compraDTO);
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
             if (Result.Status == 404)
             {
                 return NotFound(Result.Message);

@@ -7,34 +7,9 @@ namespace TIService
 {
     public class ViajeService
     {
-        private Result ValidarCompletitudViaje(ViajeDTO viaje)
-        {
-            var validaciones = new (object valor, string mensaje)[]
-            {
-                (viaje.FechaDesde, "Falta agregar la FechaPosibleEntregaDesde"),
-                (viaje.FechaHasta, "Falta agregar la FechaPosibleEntregaHasta"),
-            };
-
-            foreach (var (valor, mensaje) in validaciones)
-            {
-                if (valor == null ||
-                    (valor is DateTime dt && dt == default))
-                {
-                    return new Result { Message = mensaje };
-                }
-            }
-
-            return new Result { Success = true };
-        }
-
         public Result AgregarViaje(ViajeDTO viajeDTO)
         {
-            var resultado = ValidarCompletitudViaje(viajeDTO);
-            if (!resultado.Success)
-            {
-                return new Result { Message = resultado.Message, Status = 400 };
-            }
-
+           
             Result result = ManejoErores(viajeDTO.FechaDesde, viajeDTO.FechaHasta);
             if (!result.Success)
             {
@@ -45,7 +20,6 @@ namespace TIService
 
             return new Result { Success = true, Message = "El viaje se cargo correctamente" };
         }
-
         private Result ManejoErores(DateTime desde, DateTime hasta)
         {
             if (desde < DateTime.Now)

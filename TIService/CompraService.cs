@@ -5,38 +5,9 @@ using TIEntities;
 namespace TIService
 {
     public class CompraService
-    {
-        private Result ValidarCompletitudCompra(CompraDTO compra)
-        {
-            var validacion = new (object valor, string mensaje)[]
-            {
-                (compra.CantidadComprada, "Falta agregar cantidad comprada"),
-                (compra.FechaEntregaSolicitada, "Falta agregar fecha de entrega solicitada"),
-                (compra.DniCliente, "Falta agregar dni del cliente"),
-                (compra.CodigoProducto, "Falta agregar codigo producto")
-            };
-
-            foreach (var (valor, mensaje) in validacion)
-            {
-                if (valor == null ||
-                    (valor is int num && num <= 0) ||
-                    (valor is DateTime dt && dt == default))
-                {
-                    return new Result { Message = mensaje };
-                }
-            }
-
-            return new Result { Success = true };
-        }
-
+    {      
         public Result AgregarCompra(CompraDTO compraDTO)
         {
-            var resultado = ValidarCompletitudCompra(compraDTO);
-            if (!resultado.Success)
-            {
-                return new Result { Message = resultado.Message, Status = 400 };
-            }
-
             Compra compra = new Compra();
             compra = PasarDtoAEntity(compraDTO);
             compra.FechaEntregaEstimada = compra.FechaEntregaSolicitada;
@@ -47,7 +18,7 @@ namespace TIService
                 return new Result { Message = "Producto no encontrado", Status = 404 };
             }
 
-            resultado = producto.ValidarStock(compra.CantidadComprada);
+            var resultado = producto.ValidarStock(compra.CantidadComprada);
             if (!resultado.Success)
             {
                 return new Result { Message = resultado.Message, Status = 400 };

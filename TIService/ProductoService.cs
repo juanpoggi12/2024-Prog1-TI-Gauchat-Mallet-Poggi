@@ -7,42 +7,10 @@ namespace TIService
 {
     public class ProductoService
     {
-        public Result ValidarCompletitudProducto(Producto producto)
-        {
-            var validaciones = new (object valor, string mensaje)[]
-            {
-                (producto.Marca, "Falta la Marca"),
-                (producto.AltoCaja, "Falta alto de la caja"),
-                (producto.AnchoCaja, "Falta ancho de la caja"),
-                (producto.ProfundidadCaja, "Falta profundidad caja"),
-                (producto.PrecioUnitario, "Falta el precio"),
-                (producto.StockMinimo, "Falta stock minimo"),
-                (producto.Stock, "Falta stock total")
-            };
-
-            foreach (var (valor, mensaje) in validaciones)
-            {
-                if (valor == null ||
-                    (valor is string str && string.IsNullOrWhiteSpace(str)) ||
-                    (valor is int num && num <= 0) ||
-                    (valor is double dob && dob <= 0))
-                {
-                    return new Result { Message = mensaje };
-                }
-            }
-
-            return new Result { Success = true };
-        }
-
         public Result AgergarProducto(ProductoDTO productoDTO)
         {
             Producto producto = new Producto();
             producto = PasarDtoAEntity(productoDTO);
-            var Result = ValidarCompletitudProducto(producto);
-            if (!Result.Success)
-            {
-                return new Result { Message = Result.Message };
-            }
             ProductoFiles.EscribirProductosAJson(producto);
             return new Result { Success = true, Message = "El producto se agrego correctamente" };
         }

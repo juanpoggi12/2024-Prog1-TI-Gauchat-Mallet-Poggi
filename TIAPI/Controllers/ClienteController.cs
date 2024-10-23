@@ -18,10 +18,9 @@ namespace TIAPI.Controllers
         [HttpPost()]
         public IActionResult Post([FromBody] ClienteDTO clienteDTO)
         {
-            var result = clienteService.AgregarCliente(clienteDTO);
-            if (result.Success == false)
-            {
-                return BadRequest(result.Message);
+            clienteService.AgregarCliente(clienteDTO);
+            if (!ModelState.IsValid) { 
+            return BadRequest(ModelState);
             }
             return Ok();
         }
@@ -49,10 +48,12 @@ namespace TIAPI.Controllers
         public IActionResult Put(int dni, [FromBody] ClienteDTO clienteDTO)
         {
             var result = clienteService.EditarCliente(dni, clienteDTO);
-            if (result.Status == 400)
+            if (!ModelState.IsValid)
             {
-                return BadRequest(result.Message);
-            } else if (result.Status == 404)
+                return BadRequest(ModelState);
+            }
+
+            if (result.Status == 404)
             {
                 return NotFound(result.Message);
             }

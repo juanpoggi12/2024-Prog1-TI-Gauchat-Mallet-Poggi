@@ -5,44 +5,11 @@ using TIEntities;
 namespace TIService
 {
     public class ClienteService
-    {
-        private Result ValidarCompletitudClientes(Cliente cliente)
-        {
-            var validaciones = new (object valor, string mensaje)[]
-            {
-                (cliente.Nombre, "Falta agregar nombre"),
-                (cliente.Apellido, "Falta agregar apellido"),
-                (cliente.Dni, "Falta agregar DNI"),
-                (cliente.Longitud, "Falta agregar longitud"),
-                (cliente.Latitud, "Falta agregar latitud"),
-                (cliente.Telefono, "Falta agregar telefono"),
-                (cliente.Email, "Falta agregar mail")
-            };
-
-            foreach (var (valor, mensaje) in validaciones)
-            {
-                if (valor == null ||
-                    (valor is string str && string.IsNullOrWhiteSpace(str)) ||
-                    (valor is int num && num <= 0) ||
-                    (valor is double dob && dob == 0) ||
-                    (valor is DateTime dt && dt == default))
-                {
-                    return new Result { Message = mensaje };
-                }
-            }
-
-            return new Result { Success = true };
-        }
-
+    {   
         public Result AgregarCliente(ClienteDTO clienteDTO)
         {
             Cliente cliente = new Cliente();
-            cliente = PasarDtoAEntity(clienteDTO);
-            var resultado = ValidarCompletitudClientes(cliente);
-            if (!resultado.Success)
-            {
-                return new Result { Message = resultado.Message };
-            }
+            cliente = PasarDtoAEntity(clienteDTO);    
             ClienteFiles.EscribirClienteAJson(cliente);
             return new Result { Success = true };
         }
@@ -66,12 +33,6 @@ namespace TIService
             if (cliente == null)
             {
                 return new Result { Message = "No se encontro al cliente a editar", Status = 404 };
-            }
-            var resultado = ValidarCompletitudClientes(clienteTemporal);
-
-            if (!resultado.Success)
-            {
-                return new Result { Message = resultado.Message, Status = 400 };
             }
             cliente.Dni = clienteTemporal.Dni;
             cliente.Nombre = clienteTemporal.Nombre;
