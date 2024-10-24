@@ -6,7 +6,7 @@ namespace TIData
 {
     public class ViajeFiles
     {
-        private static string rutaArchivo = Path.GetFullPath(Path.Combine("TIAPI", "Viaje.json"));
+        private static string rutaArchivo = Path.GetFullPath("Viaje.json");
 
         // Método para establecer una ruta personalizada
         public static void SetRutaArchivo(string nuevaRuta)

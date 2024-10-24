@@ -26,7 +26,7 @@ namespace EntitiesDTO
         [Range(-90, 90, ErrorMessage = "La latitud debe estar entre -90 y 90")]
         public double Latitud { get; set; }
         [Required(ErrorMessage = "Ingrese Fecha de nacimiento")]
-        [DataType(DataType.DateTime, ErrorMessage = "Ingrese correctamente la fecha)]
+        [DataType(DataType.DateTime, ErrorMessage = "Ingrese correctamente la fecha")]
         public DateTime FechaDeNacimiento { get; set; }
     }
 }

@@ -74,11 +74,11 @@ namespace TIService
             foreach (Compra compra in compras.Where(x => x.Estado == EnumEstadoCompra.OPEN))
             {
                 double espacio = (ProductoFiles.LeerProductosAJson().FirstOrDefault(x => x.Codigo == compra.CodigoProducto).PasarACentimetrosCubicos()) * compra.CantidadComprada;
-
+                double Distancia = compra.CalcularDistancia();
                 for (int i = 0; i < camionetas.Count; i++)
                 {
                     if ((capacidades[i] + espacio) <= camionetas[i].TamañoDeCargaEnCm3 &&
-                        compra.CalcularDistancia() <= camionetas[i].DistanciaMaximaEnKm)
+                        Distancia <= camionetas[i].DistanciaMaximaEnKm)
                     {
                         capacidades[i] += espacio;                      
                         compra.Estado = EnumEstadoCompra.READY_TO_DISPATCH;

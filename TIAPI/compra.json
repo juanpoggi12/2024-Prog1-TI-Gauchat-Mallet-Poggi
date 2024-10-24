@@ -5,8 +5,8 @@
     "DniCliente": 45950945,
     "FechaCompra": "2024-10-19T17:48:36.8359967-03:00",
     "CantidadComprada": 10,
-    "FechaEntregaSolicitada": "2025-10-25T00:00:00",
-    "FechaEntregaEstimada": "2025-10-25T00:00:00",
+    "FechaEntregaSolicitada": "2024-10-25T00:00:00",
+    "FechaEntregaEstimada": "2024-10-25T00:00:00",
     "Estado": 0,
     "MontoTotal": 90.75,
     "Latitud": -35.0,
@@ -20,7 +20,7 @@
     "FechaCompra": "2024-10-19T18:00:26.1041591-03:00",
     "CantidadComprada": 2,
     "FechaEntregaSolicitada": "2024-10-26T00:00:00",
-    "FechaEntregaEstimada": "2024-10-25T00:00:00",
+    "FechaEntregaEstimada": "2024-10-26T00:00:00",
     "Estado": 0,
     "MontoTotal": 242.0,
     "Latitud": -32.0,
@@ -54,33 +54,5 @@
     "Latitud": -35.0,
     "Longitud": -67.0,
     "PrecioProducto": 10.0
-  },
-  {
-    "Codigo": 2,
-    "CodigoProducto": 2,
-    "DniCliente": 4244634,
-    "FechaCompra": "2024-10-19T18:00:26.1041591-03:00",
-    "CantidadComprada": 2,
-    "FechaEntregaSolicitada": "2024-10-26T00:00:00",
-    "FechaEntregaEstimada": "2024-10-25T00:00:00",
-    "Estado": 1,
-    "MontoTotal": 242.0,
-    "Latitud": -32.0,
-    "Longitud": -60.0,
-    "PrecioProducto": 100.0
-  },
-  {
-    "Codigo": 2,
-    "CodigoProducto": 2,
-    "DniCliente": 4244634,
-    "FechaCompra": "2024-10-19T18:00:26.1041591-03:00",
-    "CantidadComprada": 2,
-    "FechaEntregaSolicitada": "2024-10-26T00:00:00",
-    "FechaEntregaEstimada": "2024-10-25T00:00:00",
-    "Estado": 1,
-    "MontoTotal": 242.0,
-    "Latitud": -32.0,
-    "Longitud": -60.0,
-    "PrecioProducto": 100.0
   }
 ]
