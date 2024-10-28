@@ -20,7 +20,7 @@ namespace TITesting
             viajeService = new ViajeService();
 
             // Guardar la ruta original del archivo (en la carpeta "Archivos")
-            rutaOriginalViajes = Path.GetFullPath(Path.Combine("TIAPI", "Viaje.json"));
+            rutaOriginalViajes = Path.GetFullPath(Path.Combine("TIAPI", "Viaje.Json"));
 
             // Crear un archivo temporal para las pruebas
             archivoTemporalViajes = Path.Combine(Path.GetTempPath(), "ViajeTest.json");
@@ -38,9 +38,9 @@ namespace TITesting
                 {
                     CodigoProducto = 3,
                     DniCliente = 45950945,
-                    CantidadComprada = 10,
-                    FechaEntregaSolicitada = new DateTime(2025-10-25),
-                    FechaEntregaEstimada =  new DateTime(2025-10-25),
+                    CantidadComprada = 1,
+                    FechaEntregaSolicitada = new DateTime(2025, 10, 25),
+                    FechaEntregaEstimada =  new DateTime(2025, 10, 25),
                     MontoTotal = 90.75,
                     Latitud = -35.0,
                     Longitud = -67.0,
@@ -50,9 +50,9 @@ namespace TITesting
                 {
                     CodigoProducto = 2,
                     DniCliente = 4244634,
-                    CantidadComprada = 10,
-                    FechaEntregaSolicitada = new DateTime(2025-10-26),
-                    FechaEntregaEstimada =  new DateTime(2025-10-26),
+                    CantidadComprada = 1,
+                    FechaEntregaSolicitada = new DateTime(2025, 10, 26),
+                    FechaEntregaEstimada =  new DateTime(2025, 10, 26),
                     MontoTotal = 242.0,
                     Latitud = -32.0,
                     Longitud = -60.0,
@@ -62,9 +62,9 @@ namespace TITesting
                 {
                     CodigoProducto = 1,
                     DniCliente = 45950945,
-                    CantidadComprada = 10,
-                    FechaEntregaSolicitada = new DateTime(2025-10-29),
-                    FechaEntregaEstimada =  new DateTime(2025-10-29),
+                    CantidadComprada = 1,
+                    FechaEntregaSolicitada = new DateTime(2025, 10, 29),
+                    FechaEntregaEstimada =  new DateTime(2025, 10, 29),
                     MontoTotal = 2087.25,
                     Latitud = -35.0,
                     Longitud = -67.0,
@@ -127,10 +127,11 @@ namespace TITesting
         [Test]
         public void AsignarViajeYaExisteViajeTest()
         {
+
             ViajeDTO viaje = new ViajeDTO()
             {
-                FechaDesde = new DateTime(2024, 10, 19),
-                FechaHasta = new DateTime(2024, 10, 19)
+                FechaDesde = new DateTime(2024, 10, 28),
+                FechaHasta = new DateTime(2024, 10, 31)
             };
 
             Result result = viajeService.AgregarViaje(viaje);

@@ -2,11 +2,22 @@
   {
     "Codigo": 0,
     "PatenteCamionetaAsignada": "AA003OD",
-    "FechaDesde": "2024-10-25T00:00:00",
+    "FechaDesde": "2024-10-28T00:00:00",
     "FechaHasta": "2024-10-31T00:00:00",
-    "PorcentajeOcupacionCarga": 90.9090909090909,
+    "PorcentajeOcupacionCarga": 15.151515151515152,
     "Compras": [
       2
+    ]
+  },
+  {
+    "Codigo": 1,
+    "PatenteCamionetaAsignada": "AB578OE",
+    "FechaDesde": "2024-10-28T00:00:00",
+    "FechaHasta": "2024-10-31T00:00:00",
+    "PorcentajeOcupacionCarga": 29.850746268656717,
+    "Compras": [
+      1,
+      4
     ]
   }
 ]
