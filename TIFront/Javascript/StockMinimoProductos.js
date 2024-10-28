@@ -3,7 +3,6 @@ document.addEventListener("DOMContentLoaded", function () {
         .then(response => {
             if (!response.ok) {
                 if (response.status === 404) {
-                    // Manejar el caso cuando no hay productos con stock bajo
                     document.getElementById("mensajeError").innerText = "No hay productos bajos de stock.";
                     throw new Error("No hay productos bajos de stock");
                 } else {

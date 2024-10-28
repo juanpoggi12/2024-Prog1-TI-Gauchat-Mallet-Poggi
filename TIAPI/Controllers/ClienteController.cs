@@ -19,8 +19,9 @@ namespace TIAPI.Controllers
         public IActionResult Post([FromBody] ClienteDTO clienteDTO)
         {
             clienteService.AgregarCliente(clienteDTO);
-            if (!ModelState.IsValid) { 
-            return BadRequest(ModelState);
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
             }
             return Ok();
         }

@@ -4,7 +4,6 @@ namespace EntitiesDTO
 {
     public class ProductoDTO
     {
-
         [Required(ErrorMessage = "El nombre es obligatorio")]
         [StringLength(100, ErrorMessage = "El nombre no debe exceder los 100 caracteres")]
         public string Nombre { get; set; }

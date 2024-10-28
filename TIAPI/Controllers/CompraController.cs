@@ -27,7 +27,8 @@ namespace TIAPI.Controllers
             if (Result.Status == 404)
             {
                 return NotFound(Result.Message);
-            }else if (Result.Status == 400)
+            }
+            else if (Result.Status == 400)
             {
                 return BadRequest(Result.Message);
             }

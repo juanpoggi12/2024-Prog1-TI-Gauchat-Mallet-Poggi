@@ -1,19 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Security.Principal;
-using NUnit.Framework;
-using TIService;
+﻿using EntitiesDTO;
 using TIEntities;
-using EntitiesDTO;
+using TIService;
 
 namespace TITesting
 {
     public class CompraServiceTesting
     {
-        CompraService compraService = new CompraService();
+        private CompraService compraService = new CompraService();
+
         [SetUp]
         public void Setup()
         {

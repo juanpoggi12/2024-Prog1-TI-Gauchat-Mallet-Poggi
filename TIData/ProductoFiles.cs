@@ -7,6 +7,11 @@ namespace TIData
     {
         private static string rutaArchivo = Path.GetFullPath("Producto.json");
 
+        public static void SetRutaArchivo(string nuevaRuta)
+        {
+            rutaArchivo = nuevaRuta;
+        }
+
         public static void EscribirProductosAJson(Producto producto)
         {
             List<Producto> productos = LeerProductosAJson();

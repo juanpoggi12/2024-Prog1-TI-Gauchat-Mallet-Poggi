@@ -1,6 +1,3 @@
-using Swashbuckle.AspNetCore.Swagger;
-using Microsoft.OpenApi.Models;
-using Swashbuckle.AspNetCore.SwaggerUI;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.

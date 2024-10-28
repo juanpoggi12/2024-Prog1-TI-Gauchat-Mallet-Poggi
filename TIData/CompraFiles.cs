@@ -1,5 +1,4 @@
 ﻿using Newtonsoft.Json;
-using System.Runtime.InteropServices;
 using TIEntities;
 
 namespace TIData
@@ -8,7 +7,6 @@ namespace TIData
     {
         private static string rutaArchivo = Path.GetFullPath("compra.json");
 
-        // Método para establecer una ruta personalizada
         public static void SetRutaArchivo(string nuevaRuta)
         {
             rutaArchivo = nuevaRuta;
@@ -24,7 +22,7 @@ namespace TIData
             }
             else
             {
-                compras.RemoveAll(x=> x.Codigo == compra.Codigo);
+                compras.RemoveAll(x => x.Codigo == compra.Codigo);
             }
 
             compras.Add(compra);

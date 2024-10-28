@@ -19,8 +19,9 @@ namespace TIAPI.Controllers
         public IActionResult Post([FromBody] ViajeDTO viajeDTO)
         {
             var result = viajeService.AgregarViaje(viajeDTO);
-            if (!ModelState.IsValid) { 
-            return BadRequest(ModelState);
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
             }
             if (result.Success == false)
             {

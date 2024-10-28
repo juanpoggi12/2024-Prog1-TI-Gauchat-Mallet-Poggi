@@ -5,11 +5,11 @@ using TIEntities;
 namespace TIService
 {
     public class ClienteService
-    {   
+    {
         public Result AgregarCliente(ClienteDTO clienteDTO)
         {
             Cliente cliente = new Cliente();
-            cliente = PasarDtoAEntity(clienteDTO);    
+            cliente = PasarDtoAEntity(clienteDTO);
             ClienteFiles.EscribirClienteAJson(cliente);
             return new Result { Success = true };
         }
@@ -45,7 +45,7 @@ namespace TIService
             cliente.FechaUltimaActualizacion = DateTime.Now;
             ClienteFiles.EscribirClienteAJson(cliente);
 
-            return new Result { Success = true, Message = "El cliente se edito correctamente"};
+            return new Result { Success = true, Message = "El cliente se edito correctamente" };
         }
 
         public Result EliminarCliente(int dni)
@@ -92,7 +92,7 @@ namespace TIService
                 Latitud = clienteDTO.Latitud,
                 Longitud = clienteDTO.Longitud,
                 Nombre = clienteDTO.Nombre,
-                Apellido = clienteDTO.Apellido,  
+                Apellido = clienteDTO.Apellido,
             };
         }
     }

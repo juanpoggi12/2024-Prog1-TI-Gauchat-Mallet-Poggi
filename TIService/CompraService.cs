@@ -5,7 +5,7 @@ using TIEntities;
 namespace TIService
 {
     public class CompraService
-    {      
+    {
         public Result AgregarCompra(CompraDTO compraDTO)
         {
             Compra compra = new Compra();

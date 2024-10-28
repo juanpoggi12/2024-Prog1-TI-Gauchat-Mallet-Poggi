@@ -1,7 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using EntitiesDTO;
 using TIData;
 using TIEntities;
-using EntitiesDTO;
 
 namespace TIService
 {
@@ -9,7 +8,6 @@ namespace TIService
     {
         public Result AgregarViaje(ViajeDTO viajeDTO)
         {
-           
             Result result = ManejoErores(viajeDTO.FechaDesde, viajeDTO.FechaHasta);
             if (!result.Success)
             {
@@ -20,6 +18,7 @@ namespace TIService
 
             return new Result { Success = true, Message = "El viaje se cargo correctamente" };
         }
+
         private Result ManejoErores(DateTime desde, DateTime hasta)
         {
             if (desde < DateTime.Now)
@@ -50,10 +49,10 @@ namespace TIService
             {
                 if (!(fechaFinNuevo < viaje.FechaDesde || fechaInicioNuevo > viaje.FechaHasta))
                 {
-                    return true; // Si se solapa
+                    return true;
                 }
             }
-            return false; // Si no se solapan con ningún viaje
+            return false;
         }
 
         private void AsignarViajes(ViajeDTO viajeDTO)
@@ -80,7 +79,7 @@ namespace TIService
                     if ((capacidades[i] + espacio) <= camionetas[i].TamañoDeCargaEnCm3 &&
                         Distancia <= camionetas[i].DistanciaMaximaEnKm)
                     {
-                        capacidades[i] += espacio;                      
+                        capacidades[i] += espacio;
                         compra.Estado = EnumEstadoCompra.READY_TO_DISPATCH;
                         CompraFiles.EscribirCompraAJson(compra);
                         viajesAsignados[i].Compras.Add(compra.Codigo);

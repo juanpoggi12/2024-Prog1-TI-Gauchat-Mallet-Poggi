@@ -13,6 +13,7 @@
         public DateTime? FechaUltimaActualizacion { get; set; }
         public DateTime? FechaDeEliminacion { get; set; }
         public DateTime FechaCreacion { get; set; }
+
         public Cliente()
         {
             FechaCreacion = DateTime.Now;

@@ -25,6 +25,7 @@ namespace TIAPI.Controllers
             }
             return Ok(Result.Message);
         }
+
         [HttpGet()]
         public IActionResult Get()
         {
@@ -44,7 +45,7 @@ namespace TIAPI.Controllers
             {
                 return NotFound(new { message = Result.Message });
             }
-            return Ok(new { message = Result.Message});
+            return Ok(new { message = Result.Message });
         }
     }
 }

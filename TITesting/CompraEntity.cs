@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Security.Principal;
-using NUnit.Framework;
-using TIEntities;
+﻿using TIEntities;
 
 namespace TITesting
 {
@@ -28,7 +21,7 @@ namespace TITesting
         public void CalcularDistanciaTest()
         {
             Compra compra = new Compra()
-            { 
+            {
                 Latitud = -35,
                 Longitud = -67
             };
