@@ -6,7 +6,10 @@ namespace TIData
     public class ClienteFiles
     {
         private static string rutaArchivo = Path.GetFullPath("cliente.json");
-
+        public static void SetRutaArchivo(string nuevaRuta)
+        {
+            rutaArchivo = nuevaRuta;
+        }
         public static void EscribirClienteAJson(Cliente cliente)
         {
             List<Cliente> clientes = LeerClienteAJson();

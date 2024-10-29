@@ -1,12 +1,14 @@
-﻿using TIEntities;
+﻿using TIData;
+using TIEntities;
 
 namespace TITesting
 {
-    public class CompraEntity
+    public class CompraTesting
     {
         [SetUp]
         public void Setup()
         {
+           
         }
 
         [Test]
