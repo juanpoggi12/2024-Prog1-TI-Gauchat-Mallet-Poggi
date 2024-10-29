@@ -47,7 +47,7 @@ namespace TITesting
                 CodigoProducto = 14,
                 DniCliente = 46449991,
                 CantidadComprada = 10,
-                FechaEntregaSolicitada = DateTime.Now
+                FechaEntregaSolicitada = DateTime.Now.AddDays(2)
             };
 
             Result result = compraService.AgregarCompra(compraDTO);
@@ -77,7 +77,7 @@ namespace TITesting
                 CodigoProducto = 1,
                 DniCliente = 46449992,
                 CantidadComprada = 5,
-                FechaEntregaSolicitada = DateTime.Now
+                FechaEntregaSolicitada = DateTime.Now.AddDays(10),
             };
 
             Result result = compraService.AgregarCompra(compraDTO);
@@ -107,7 +107,7 @@ namespace TITesting
                 CodigoProducto = 1,
                 DniCliente = 45950945,
                 CantidadComprada = 10,
-                FechaEntregaSolicitada = DateTime.Now
+                FechaEntregaSolicitada = DateTime.Now.AddDays(20)
             };
 
             Result result = compraService.AgregarCompra(compraDTO);

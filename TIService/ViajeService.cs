@@ -106,7 +106,7 @@ namespace TIService
         private List<Compra> ObtenerCompras(DateTime desde, DateTime hasta)
         {
             return CompraFiles.LeerCompraAJson().Where(x => x.FechaEntregaEstimada >= desde &&
-                                                            x.FechaEntregaEstimada <= hasta).ToList();
+                                                            x.FechaEntregaEstimada <= hasta && x.Estado == EnumEstadoCompra.OPEN).ToList();
         }
     }
 }

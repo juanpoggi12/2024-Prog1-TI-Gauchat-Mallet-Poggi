@@ -11,7 +11,10 @@ namespace TIService
             Compra compra = new Compra();
             compra = PasarDtoAEntity(compraDTO);
             compra.FechaEntregaEstimada = compra.FechaEntregaSolicitada;
-
+         if (compra.FechaEntregaSolicitada < DateTime.Now)
+            {
+                return new Result { Message = "La fecha de entrega es menor a la actual", Status = 400 };
+            }
             Producto producto = ProductoFiles.LeerProductosAJson().FirstOrDefault(x => x.Codigo == compra.CodigoProducto);
             if (producto == null)
             {

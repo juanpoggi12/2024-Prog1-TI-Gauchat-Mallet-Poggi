@@ -41,27 +41,20 @@
             double RadioTierraKm = 6371;
             double longitud1 = -61.4867;
             double latitud1 = -31.25033;
-            // Convertir las latitudes y longitudes de grados a radianes
             double radLatitud1 = GradosARadianes(latitud1);
             double radLongitud1 = GradosARadianes(longitud1);
             double radLatitud2 = GradosARadianes(Latitud);
             double radLongitud2 = GradosARadianes(Longitud);
-
-            // Diferencias entre las coordenadas
             double difLatitudes = radLatitud2 - radLatitud1;
             double difLongitudes = radLongitud2 - radLongitud1;
-
-            // Aplicar la fórmula de Haversine
             double a = Math.Sin(difLatitudes / 2) * Math.Sin(difLatitudes / 2) +
                        Math.Cos(radLatitud1) * Math.Cos(radLatitud2) *
                        Math.Sin(difLongitudes / 2) * Math.Sin(difLongitudes / 2);
             double c = 2 * Math.Atan2(Math.Sqrt(a), Math.Sqrt(1 - a));
 
-            // Distancia final en kilómetros
             return RadioTierraKm * c;
         }
 
-        // Método para convertir grados a radianes
         public static double GradosARadianes(double grados)
         {
             return grados * (Math.PI / 180);

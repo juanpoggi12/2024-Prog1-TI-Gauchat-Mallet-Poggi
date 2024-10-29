@@ -8,18 +8,7 @@
     "ProfundidadCaja": 10.0,
     "PrecioUnitario": 10.0,
     "StockMinimo": 10,
-    "Stock": 980
-  },
-  {
-    "Codigo": 2,
-    "Nombre": "Rocklets",
-    "Marca": "Arcor",
-    "AltoCaja": 10.0,
-    "AnchoCaja": 10.0,
-    "ProfundidadCaja": 5.0,
-    "PrecioUnitario": 100.0,
-    "StockMinimo": 10,
-    "Stock": 998
+    "Stock": 5
   },
   {
     "Codigo": 1,
@@ -30,6 +19,17 @@
     "ProfundidadCaja": 5.0,
     "PrecioUnitario": 100.0,
     "StockMinimo": 10,
-    "Stock": 1979
+    "Stock": 199
+  },
+  {
+    "Codigo": 2,
+    "Nombre": "Rocklets",
+    "Marca": "Arcor",
+    "AltoCaja": 10.0,
+    "AnchoCaja": 10.0,
+    "ProfundidadCaja": 5.0,
+    "PrecioUnitario": 100.0,
+    "StockMinimo": 10,
+    "Stock": 199
   }
 ]

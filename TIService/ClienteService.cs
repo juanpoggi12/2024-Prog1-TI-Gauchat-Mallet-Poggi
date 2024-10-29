@@ -8,8 +8,18 @@ namespace TIService
     {
         public Result AgregarCliente(ClienteDTO clienteDTO)
         {
+            
             Cliente cliente = new Cliente();
             cliente = PasarDtoAEntity(clienteDTO);
+            Compra compra = new Compra
+            {
+                Latitud = cliente.Latitud,
+                Longitud = cliente.Longitud
+            };
+            if (compra.CalcularDistancia() > 750)
+            {
+                return new Result { Message = "No llegamos hasta ahi, muy lejos", Status = 400};
+            }
             ClienteFiles.EscribirClienteAJson(cliente);
             return new Result { Success = true };
         }

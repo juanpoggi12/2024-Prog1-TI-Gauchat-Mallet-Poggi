@@ -15,9 +15,9 @@ namespace EntitiesDTO
         [Required(ErrorMessage = "Ingrese el apellido del cliente")]
         [StringLength(50, ErrorMessage = "El apellido no puede superar los 50 caracteres")]
         public string Apellido { get; set; }
-
+        
         [Required(ErrorMessage = "Ingrese el E-mail")]
-        [DataType(DataType.EmailAddress, ErrorMessage = "Ingrese correctamente el E-mail")]
+        [EmailAddress(ErrorMessage = "Ingrese correctamente el E-mail")]
         public string Email { get; set; }
 
         [Required(ErrorMessage = "Ingrese el numero de telefono cliente")]

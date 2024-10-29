@@ -258,8 +258,6 @@ namespace TITesting
             {
                 File.Delete(archivoTemporalProductos);
             }
-
-            // Restaurar la ruta original del archivo
             ViajeFiles.SetRutaArchivo(rutaOriginalViajes);
             CompraFiles.SetRutaArchivo(rutaOriginalCompras);
             CamionetaFiles.SetRutaArchivo(rutaOriginalCamionetas);
