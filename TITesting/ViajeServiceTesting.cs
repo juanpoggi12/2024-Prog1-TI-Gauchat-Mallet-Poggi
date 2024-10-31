@@ -171,7 +171,7 @@ namespace TITesting
             ViajeDTO viaje = new ViajeDTO()
             {
                 FechaDesde = new DateTime(2023, 10, 19),
-                FechaHasta = new DateTime(2022, 10, 19)
+                FechaHasta = new DateTime(2025, 10, 20)
             };
 
             Result result = viajeService.AgregarViaje(viaje);
