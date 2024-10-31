@@ -21,6 +21,10 @@ namespace TIService
 
         private Result ManejoErores(DateTime desde, DateTime hasta)
         {
+            if(hasta < desde)
+            {
+                return new Result { Message = "La fecha hasta no puede ser  menor fecha desde", Status = 400 };
+            }
             if (desde < DateTime.Now)
             {
                 return new Result { Message = "La fecha de inicio es menor a la actual", Status = 400 };
